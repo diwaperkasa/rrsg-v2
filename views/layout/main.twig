@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ function('wp_get_document_title') }}</title>
+  <!-- Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!-- Owl Carousel CSS -->
+  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
+  <!-- Main css -->
+  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/css/style.css" rel="stylesheet">
+  {{ function('wp_head') }}
+  {% block css_script %}
+  {% endblock %}
+</head>
+
+<body>
+  {{ include('layout/header.twig') }}
+  <!-- start content -->
+  {% block content %}
+  <span>Your content here</span>
+  {% endblock %}
+  <!-- end content -->
+  {% block modal %}
+  {% endblock %}
+  {{ include('layout/footer.twig') }}
+  <!-- JQuery -->
+  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- Owl Carousel JavaScript -->
+  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+  <!-- Main -->
+  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/js/main.js"></script>
+  {{ function('wp_footer') }}
+  {% block js_script %}
+  {% endblock %}
+</body>
+</html>

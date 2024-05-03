@@ -1,0 +1,7 @@
+{
+    "require": {
+        "twig/twig": "^3.0",
+        "htmlburger/carbon-fields": "^3.6",
+        "timber/timber": "^2.1"
+    }
+}

@@ -1,0 +1,145 @@
+{% extends "layout/main.twig" %}
+
+{% block content %}
+	<main>
+		<section id="section-newsfeed">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<nav class="nav side-nav flex-column my-4 d-none d-md-block">
+							<a class="nav-link active" href="#">Lifestyle</a>
+							<a class="nav-link" aria-current="page" href="#">Watches & Jewellery</a>
+							<a class="nav-link" href="#">Gear</a>
+							<a class="nav-link" href="#">Style</a>
+							<a class="nav-link" href="#">Art & Design</a>
+							<a class="nav-link" href="#">Investment</a>
+							<a class="nav-link" href="#">Robb Spotlight</a>
+						</nav>
+					</div>
+					<div class="col-md-8">
+						<div class="my-4">
+							<div class="card rounded-0 border-0">
+								<div class="img-hover-zoom">
+									<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch4.jpg" class="card-img-top" alt="...">
+								</div>
+								<div class="card-body text-center">
+									<a href="stories.html" class="h3 mb-2">The hottest timepieces from LVMH Watch Week 2024
+									</a>
+									<p class="text-secondary mb-2">Our top picks from Bulgari, Zenith, Hublot and TAG Heuer showcased at LVMH Watch Week 2024</p>
+									<span>9 January, 2024</span>
+									-
+									<span>Amos Chin</span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6">
+									<div class="card rounded-0 border-0">
+										<div class="img-hover-zoom">
+											<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch5.jpg" class="card-img-top" alt="...">
+										</div>
+										<div class="card-body text-center">
+											<a href="stories.html" class="h3 mb-2">Bulgari entices in gold finery at LVMH Watch Week 2024</a>
+											<br>
+											<span>31 January, 2024</span>
+											-
+											<span>Amos Chin</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="card rounded-0 border-0">
+										<div class="img-hover-zoom">
+											<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch6.jpg" class="card-img-top" alt="...">
+										</div>
+										<div class="card-body text-center">
+											<a href="stories.html" class="h3 mb-2">RMétiers d’art watches that look stunning on the wrist</a>
+											<br>
+											<span>29 January, 2024</span>
+											-
+											<span>Amos Chin</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="card rounded-0 border-0">
+										<div class="img-hover-zoom">
+											<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch7.jpg" class="card-img-top" alt="...">
+										</div>
+										<div class="card-body text-center">
+											<a href="stories.html" class="h3 mb-2">Moser drops a tourbillon with an incredible jade dial</a>
+											<br>
+											<span>29 January, 2024</span>
+											-
+											<span>Angus Mackenzie</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="card rounded-0 border-0">
+										<div class="img-hover-zoom">
+											<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch8.jpg" class="card-img-top" alt="...">
+										</div>
+										<div class="card-body text-center">
+											<a href="stories.html" class="h3 mb-2">The Answers With Carl Cox, a multifaceted DJ</a>
+											<br>
+											<span>30 January, 2024</span>
+											-
+											<span>Rachel Cormack</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="section-MostPopular">
+			<div class="mt-5">
+				<h2 class="text-center mb-4">Most Popular</h2>
+				<div class="owl-carousel latest-carousel owl-theme">
+					<div class="item">
+						<div class="card rounded-0 border-0">
+							<div class="img-hover-zoom">
+								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide3.jpg" class="card-img-top" alt="...">
+							</div>
+							<div class="card-body text-center">
+								<a href="#" class="text-secondary text-sm">Investment
+								</a>
+								<br>
+								<a href="stories.html" class="h6">The five most expensive watches sold at auction in 2023</a>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="card rounded-0 border-0">
+							<div class="img-hover-zoom">
+								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide4.jpg" class="card-img-top" alt="...">
+							</div>
+							<div class="card-body text-center">
+								<a href="#" class="text-secondary text-sm">Lifestyle
+								</a>
+								<br>
+								<a href="stories.html" class="h6">Philippe Starck joins Mortlach as creative director</a>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="card rounded-0 border-0">
+							<div class="img-hover-zoom">
+								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide5.jpg" class="card-img-top" alt="...">
+							</div>
+							<div class="card-body text-center">
+								<a href="#" class="text-secondary text-sm">Style
+								</a>
+								<br>
+								<a href="stories.html" class="h6">The Gucci Ancora campaign celebrates personal expression</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}

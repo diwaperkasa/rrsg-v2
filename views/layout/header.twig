@@ -1,0 +1,94 @@
+<!-- Pop up Menu -->
+<div class="offcanvas offcanvas-start w-100 PopupMenu" tabindex="-1" id="PopupMenu" aria-labelledby="PopupMenuLabel">
+	<div class="offcanvas-header w-100">
+		<a class="navbar-brand" href="index.html">
+			<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/RR-SINGAPORE_Logo2019_Outlined.png" alt="logo" height="30">
+		</a>
+		<button type="button" class="btn bg-transparent fs-2" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+	</div>
+	<div class="offcanvas-body">
+		<nav class="nav side-nav flex-column position-relative top-0">
+			<a class="nav-link fs-1" href="about.html">About</a>
+			<a class="nav-link fs-1" href="about.html">Contact</a>
+			<a class="nav-link fs-1" href="distribution.html">Advertise</a>
+			<a class="nav-link fs-1" href="about.html">Media Kit</a>
+			<a class="nav-link fs-1" href="partnership subscriptions.html">Partnerships</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'lifestyle')) }}">Lifestyle</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'watches-jewellery')) }}">Watches & Jewellery</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'gear')) }}">Gear</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'style')) }}">Style</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'art-design')) }}">Art & Design</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'investment')) }}">Investment</a>
+			<a class="nav-link fs-1" href="{{ function('get_permalink', function('get_page_by_path', 'robb-spotlight')) }}">Robb Spotlight</a>
+		</nav>
+	</div>
+</div>
+<!-- End Pop up Menu -->
+<header class="top-nav bg-white">
+	<nav class="navbar navbar-expand-lg navbar-light bg-white pt-4">
+		<div class="container">
+			<button class="navbar-toggler border-0 text-danger" type="button" data-bs-toggle="offcanvas" href="#PopupMenu" role="button" aria-controls="PopupMenuLabel">
+				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-text-left" viewbox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+				</svg>
+			</button>
+			<a class="navbar-brand navbar-toggler border-0 m-0" href="index.html">
+				<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/RR-SINGAPORE_Logo2019_Outlined.png" alt="logo" height="35">
+			</a>
+			<div class="navbar-toggler search-container p-0">
+				<div class="search-icon-btn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+					</svg>
+				</div>
+				<div class="search-input">
+					<input type="search" class="search-bar" placeholder="Search...">
+				</div>
+			</div>
+			<div class="collapse navbar-collapse">
+				<a class="navbar-brand" href="index.html">
+					<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/RR-SINGAPORE_Logo2019_Outlined.png" alt="logo" height="40">
+				</a>
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Best of the Best</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Thought Leaders</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">The Movement</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Masters of Time</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Horizontal Scrolling Nav-->
+	<div class="container nav-scroller py-1 mb-2">
+		<nav class="nav justify-content-between align-items-center">
+			<div>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'lifestyle')) }}">Lifestyle</a>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'watches-jewellery')) }}">Watches & Jewellery</a>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'gear')) }}">Gear</a>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'style')) }}">Style</a>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'art-design')) }}">Art & Design</a>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'investment')) }}">Investment</a>
+				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'robb-spotlight')) }}">Robb Spotlight</a>
+			</div>
+			<div class="search-container" style="float:right">
+				<div class="search-icon-btn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+					</svg>
+				</div>
+				<div class="search-input">
+					<input type="search" class="search-bar" placeholder="Search...">
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!-- Horizontal Scrolling Nav-->
+</header>
