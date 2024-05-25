@@ -1,47 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ function('wp_get_document_title') }}</title>
-  <!-- Fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <!-- Owl Carousel CSS -->
-  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
-  <!-- Main css -->
-  <link href="{{ function('get_stylesheet_directory_uri') }}/assets/css/style.css" rel="stylesheet">
-  {{ function('wp_head') }}
-  {% block css_script %}
-  {% endblock %}
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ function('wp_get_document_title') }}</title>
+		<!-- Fonts-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link
+		href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+		<link
+		href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<!-- Owl Carousel CSS -->
+		<link href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+		<link
+		href="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
+		<!-- Main css -->
+		<link href="{{ function('get_stylesheet_directory_uri') }}/assets/css/style.css" rel="stylesheet">
+		{{ function('wp_head') }}
 
-<body>
-  {{ include('layout/header.twig') }}
-  <!-- start content -->
-  {% block content %}
-  <span>Your content here</span>
-  {% endblock %}
-  <!-- end content -->
-  {% block modal %}
-  {% endblock %}
-  {{ include('layout/footer.twig') }}
-  <!-- JQuery -->
-  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-  <!-- Owl Carousel JavaScript -->
-  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
-  <!-- Main -->
-  <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/js/main.js"></script>
-  {{ function('wp_footer') }}
-  {% block js_script %}
-  {% endblock %}
-</body>
+		<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NRXZQW6');
+    </script>
+		<!-- End Google Tag Manager -->
+
+		<!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '147646339349091'); 
+      fbq('track', 'PageView');
+    </script>
+		<noscript>
+		  <img height="1" width="1" src="https://www.facebook.com/tr?id=147646339349091&ev=PageView&noscript=1"/>
+    </noscript>
+		<!-- End Facebook Pixel Code -->
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3512079423481761",
+        enable_page_level_ads: true
+      });
+    </script>
+
+		<!-- Start GPT Async Tag -->
+    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+    <script>
+      var gptadslots = [];
+      var googletag = googletag || {cmd:[]};
+    </script>
+    <script>
+      googletag.cmd.push(function() {
+        var mapping = googletag.sizeMapping().
+          addSize([1024,768], [[960,300]]). //desktop
+          addSize([768,0], [[960,300]]). //tablet
+          addSize([320,0], [[400,500],[375, 500]]). //mobile
+          build();
+        
+        var mapping_header = googletag.sizeMapping().
+          addSize([1024,768], [[1280,300]]). //desktop
+          // addSize([768,0], [[728,90]]). //tablet the original
+          addSize([768,0], [[1280,300]]).
+          addSize([320,0], [[375, 225],[400,225]]). //mobile
+          build();
+        
+        var mapping_vertical = googletag.sizeMapping().
+          addSize([1024,768], [[300,600]]). //desktop
+          build();
+
+        // Adslot 1 declaration
+        // gptadslots.push(googletag.defineSlot('/21773730488/header', [[1280,160],[728,90],[320,100]], 'div-gpt-ad-3035191-1') // the original code
+        // gptadslots.push(googletag.defineSlot('/21773730488/header', [[1280,300],[400,225],[375, 225]], 'div-gpt-ad-3035191-1') // oct 2023
+        gptadslots.push(googletag.defineSlot('/21773730488/header', [[1280, 300], [375, 225], [400, 225]], 'div-gpt-ad-1698301711475-0')
+          .defineSizeMapping(mapping_header)
+          .setTargeting('tag', {{ dfpTarget|json_encode() }})
+          .addService(googletag.pubads()));
+        // Adslot 2 declaration
+        // gptadslots.push(googletag.defineSlot('/21773730488/top-lb', [[960,300],[400,500],[375, 500]], 'div-gpt-ad-3035191-4') // oct 2023
+        gptadslots.push(googletag.defineSlot('/21773730488/top-lb', [[375, 500], [960, 300], [400, 500]], 'div-gpt-ad-1698302925146-0')
+          .defineSizeMapping(mapping)
+          .setTargeting('tag', {{ dfpTarget|json_encode() }})
+          .addService(googletag.pubads()));
+        // Adslot 3 declaration
+        // gptadslots.push(googletag.defineSlot('/21773730488/mid-lb', [[960,300],[400,500],[375, 500]], 'div-gpt-ad-3035191-3') // oct 2023
+        gptadslots.push(googletag.defineSlot('/21773730488/mid-lb', [[375, 500], [960, 300], [400, 500]], 'div-gpt-ad-1698303160858-0')
+          .defineSizeMapping(mapping)
+          .setTargeting('tag', {{ dfpTarget|json_encode() }})
+          .addService(googletag.pubads()));
+        // Adslot 4 declaration
+        // gptadslots.push(googletag.defineSlot('/21773730488/bottom-lb', [[960,300],[400,500],[375, 500]], 'div-gpt-ad-3845563-2') // oct 2023
+        gptadslots.push(googletag.defineSlot('/21773730488/bottom-lb', [[400, 500], [375, 500], [960, 300]], 'div-gpt-ad-1698303309422-0')
+          .defineSizeMapping(mapping)
+          .setTargeting('tag', {{ dfpTarget|json_encode() }})
+          .addService(googletag.pubads()));
+        // Adslot 5 declaration (Vertical Banner)
+        gptadslots.push(googletag.defineSlot('/21773730488/vertical-lb', [[300,600],[300,600]], 'div-gpt-ad-3035191-5')
+          .defineSizeMapping(mapping_vertical)
+          .setTargeting('tag', {{ dfpTarget|json_encode() }})
+          .addService(googletag.pubads()));
+          
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.pubads().setCentering(true);
+        googletag.enableServices();
+      });
+    </script>
+		<!-- End GPT Async Tag -->
+    {% if (function('is_singular', 'post')) %}
+    <script>
+      let vidy = new Vidy({
+        appid: '80ab9f93-1db2-4f0f-8619-63b3077f25e8',
+        postid: '{{ data.post.ID }}',
+        content: '.type-post',
+        autoload: true
+      });
+	  </script>
+    {% endif %}
+
+    {% if (function('is_singular', 'features')) %}
+    <script>
+      let vidy = new Vidy({
+        appid: '80ab9f93-1db2-4f0f-8619-63b3077f25e8',
+        postid: '{{ data.post.ID }}',
+        content: '.features',
+        autoload: true
+      });
+    </script>
+    {% endif %}
+
+    {% block css_script %}
+	  {% endblock %}
+	</head>
+	<body>
+		{{ include('layout/header.twig') }}
+		<!-- start content -->
+		{% block content %}
+      <span>Your content here</span>
+		{% endblock %}
+		<!-- end content -->
+    {% block modal %}
+		{% endblock %}
+		{{ include('layout/footer.twig') }}
+		<!-- JQuery -->
+		 <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!-- Bootstrap core JavaScript -->
+		 <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+		<!-- Owl Carousel JavaScript -->
+		 <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+		<!-- Main -->
+		<script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/js/main.js"></script>
+    {{ function('wp_footer') }}
+    {% block js_script %}
+    {% endblock %}
+  </body>
 </html>
