@@ -1,1 +1,162 @@
 {% extends "layout/main.twig" %}
+
+{% block css_script %}
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
+	<style>
+		#section-newscontent .paragraph h1 {
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		#section-newscontent .paragraph h2 {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+		}
+
+        #section-newscontent .paragraph a {
+            color: #9c6e6e;
+        }
+
+		.wp-caption {
+			margin-bottom: 2em;
+			max-width: 100%;
+		}
+
+		.wp-caption .wp-caption-text {
+			padding: 0.4em;
+			font-size: 0.9em;
+			font-style: italic;
+			text-align: center;
+		}
+
+        #section-MostPopular img {
+            max-width: 600px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .wp-post-image {
+            max-width: 100%;
+            height: auto;
+        }
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main>
+		<section id="section-newscontent">
+			<nav class="container my-4" aria-label="breadcrumb">
+				<div class="d-flex align-items-center">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item h5">
+							<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item h5">
+							<a href="{{ function('parent_category_link', data.post) }}">{{ function('primary_category', data.post) }}</a>
+						</li>
+					</ol>
+					<hr class="flex-grow-1 border-top border-dark ms-4">
+				</div>
+			</nav>
+			<div class="container">
+				{%
+                    set term_list = function('wp_get_post_terms', data.post.ID, 'writer', {'field': 'all'})
+                %}
+				<h1 class="title mb-3">{{ data.post.title }}</h1>
+				<div class="d-flex justify-content-between mb-3">
+					<span>By
+						<span class="writer-post">{{ term_list[0].name }}</span>
+					</span>
+					<span class="date-post">{{ function('wp_date', 'j F, Y', function('strtotime', data.post.post_date)) }}</span>
+				</div>
+				<div class="img-hover-zoom">
+					{{ function('get_the_post_thumbnail', data.post) }}
+				</div>
+                <div id='div-gpt-ad-1698302925146-0' class="ad leaderboard leaderboard-top">
+                <script>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1698302925146-0');
+                    });
+                </script>
+                </div>
+				<div class="row paragraph mb-5">
+					<div class="col-md-8">
+						<div class="my-4">
+							{{ data.post.content }}
+						</div>
+					</div>
+                    <div class="col-md-4">
+                        <div id='div-gpt-ad-3035191-5' class="ad leaderboard leaderboard-top">
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-3035191-5');
+                                });
+                            </script>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</section>
+		{# <section id="section-writer">
+		            <div class="container">
+		                <h2 class="mb-4">Written by</h2>
+		                <div class="bg-black text-white my4 p-2 p-md-5">
+		                <div class="row">
+		                    <div class="col-8 col-md-10">
+		                    <p>She is born in Lot et Garonne, she's attached to Bordeaux and now lives in Angers, her artistic experience of 30 years is nourished by her several trainings, exchanges and encounters.</p>
+		                    <p>Ghislaine Ferreira's art belongs to the expressionist movement.</p>
+		                    <p>Her portraits reflect the interior mirror of the human being. Through a humanistic look, she dissects the other, through a lot of depth. She has baptized the procedure "the triangular human". Jean-Claude Ferreira explains "we all exist through 3 dimensions: the intimate being, the image of a being and the perceived being...Ghislaine plays around with this triangulation in a subtle manner on a canvas".</p>
+		                    <a href="#" class="text-white text-decoration-underline">Writer’s page</a>
+		                    </div>
+		                    <div class="col-4 col-md-2">
+		                    <img src="/assets/img/writer.jpg" class="card-img-top" alt="...">
+		                    </div>
+		                </div>
+		                </div>
+		            </div>
+		        </section> #}
+		<section id="section-MostPopular">
+			<div class="mt-5">
+				<h2 class="text-center mb-4">You May Also Like</h2>
+                {%
+                    set popular_articles = function('get_popular_article', data.post)
+                %}
+				<div class="owl-carousel latest-carousel owl-theme">
+                    {% for article in popular_articles.posts %}
+                        <div class="item">
+                            <div class="card rounded-0 border-0">
+                                <div class="img-hover-zoom">
+                                    {{ function('get_the_post_thumbnail', article) }}
+                                </div>
+                                <div class="card-body text-center">
+                                    {{ function('primary_category', article) }}
+                                    <br>
+                                    <a href="{{ function('the_permalink', article) }}"><h5>{{ function('short_title', article) }}</h5></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
+
+{% block js_script %}
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script type="text/javascript">
+        $('.latest-carousel').owlCarousel({
+            loop: true,
+            autoplay: true,
+            lazyLoad: true,
+            margin: 16,
+            nav: false,
+            dots: false,
+            center: true,
+            items: 2,
+        });
+
+        const slider = $('.gallery-size-thumbnail').flickity();
+    </script>
+{% endblock %}

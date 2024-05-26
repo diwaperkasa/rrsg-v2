@@ -3,86 +3,54 @@
 {% block content %}
 	<main>
 		<section id="section-hero">
-			<div class="pb-5">
-				<div class="owl-carousel hero-carousel owl-theme">
-					<div class="item">
-						<div class="card rounded-0 border-0 mb-4">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide1.jpg" class="card-img-top" alt="...">
+			<div class="container">
+				<div class="pb-5">
+					<div class="owl-carousel hero-carousel owl-theme">
+						{% for slider in banner.posts %}
+							<div class="item">
+								<div class="card rounded-0 border-0 mb-4">
+									<div class="img-hover-zoom img-fluid">
+										{{ function('get_the_post_thumbnail', slider) }}
+									</div>
+									<div class="card-body bg-white shadow-sm text-center mx-md-5 mx-4 p-4">
+										<a href="#" class="text-secondary">{{ function('primary_category', slider) }}</a>
+										<br>
+										<a href="{{ function('the_permalink', slider) }}" target="_self">
+											<h5>{{ function('short_title', slider) }}</h5>
+										</a>
+									</div>
+								</div>
 							</div>
-							<div class="card-body bg-white shadow-sm text-center mx-md-5 mx-4 p-4">
-								<a href="#" class="text-secondary">WATCHES & JEWELLERY</a>
-								<br>
-								<a href="stories.html" class="h2">The 10 Best Watches at the Golden</a>
-								<p class="card-text">Globes Hollywood came correct last night.</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="card rounded-0 border-0 mb-4">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide2.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body bg-white shadow-sm text-center mx-md-5 mx-4 p-4">
-								<a href="#" class="text-secondary">LIFESTYLE</a>
-								<br>
-								<a href="stories.html" class="h2">Hydrate sustainably and in style: MCM</a>
-								<p class="card-text">
-									launches recyclable bottle in collaboration with Sigg</p>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
-			</div>
+			<div>
 		</section>
 		<section id="section-latest">
-			<div class="">
+			<div class="container">
+				{% set latest_article = function('get_latest_article') %}
 				<h2 class="text-center mb-4">LATEST</h2>
 				<div class="owl-carousel latest-carousel owl-theme">
-					<div class="item">
-						<div class="card rounded-0 border-0">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide3.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body text-center">
-								<a href="#" class="text-secondary text-sm">Investment
-								</a>
-								<br>
-								<a href="stories.html" class="h6">The five most expensive watches sold at auction in 2023</a>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="card rounded-0 border-0">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide4.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body text-center">
-								<a href="#" class="text-secondary text-sm">Lifestyle
-								</a>
-								<br>
-								<a href="stories.html" class="h6">Philippe Starck joins Mortlach as creative director</a>
+					{% for article in latest_article.posts %}
+						<div class="item">
+							<div class="card rounded-0 border-0">
+								<div class="img-hover-zoom">
+                                    {{ function('get_the_post_thumbnail', article) }}
+								</div>
+								<div class="card-body text-center">
+									<div>
+										{{ function('primary_category', article) }}
+									</div>
+									<div>
+										<a href="{{ function('the_permalink', article) }}" class="h6"><h5>{{ function('short_title', article) }}</h5></a>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="card rounded-0 border-0">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/slide5.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body text-center">
-								<a href="#" class="text-secondary text-sm">Style
-								</a>
-								<br>
-								<a href="stories.html" class="h6">The Gucci Ancora campaign celebrates personal expression</a>
-							</div>
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</section>
-
-
 		<section id="section-newsfeed">
 			<div class="container">
 				<div class="mb-2">
@@ -242,26 +210,24 @@
 				</div>
 			</div>
 		</section>
-
 		<section id="section-subscribe" class="mt-4">
 			<div class="container-fluid p-0">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<h4 class="mb-4">December 2023</h4>
 							<p>We close the year with our much anticipated Ultimate Gift Guide. Pamper yourself and your loved ones, and celebrate a well-lived year with a specially curated list of the most extraordinary accoutrements and experiences.</p>
 							<p class="text-muted">Subscribe and receive a copy of Robb Report Singapore at your doorstep each month.</p>
-							<select class="form-select rounded-0" aria-label="Default select example">
-								<option value="1">Single Issue</option>
-								<option value="2">Annual Print Subscription (Local)</option>
-								<option value="3">Annual Print Subscription (International)</option>
-								<option value="4">Digital Subscription</option>
-							</select>
+							<div class="mb-3">
+								<select class="form-control rounded-0" aria-label="Default select example">
+									<option value="1">Single Issue</option>
+									<option value="2">Annual Print Subscription (Local)</option>
+									<option value="3">Annual Print Subscription (International)</option>
+									<option value="4">Digital Subscription</option>
+								</select>
+							</div>
 						</div>
-						<div class="col-md-4">
-							<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/magz.jpg" class="img-fluid p-3 p-md-4" alt="...">
-						</div>
-						<div class="col-md-4 text-md-end">
+						<div class="col-md-6 text-md-end">
 							<h4 class="mb-4">Terms & Conditions</h4>
 							<p>Standard conditions on all purchase or subscriptions.
 								                Subscriptions or sold goods are 

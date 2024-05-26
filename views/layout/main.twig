@@ -146,7 +146,7 @@
 	  {% endblock %}
 	</head>
 	<body>
-		{{ include('layout/header.twig') }}
+		{{ include('layout/header.twig', {'dfpTarget': dfpTarget, 'banner': banner}) }}
 		<!-- start content -->
 		{% block content %}
       <span>Your content here</span>
@@ -154,6 +154,13 @@
 		<!-- end content -->
     {% block modal %}
 		{% endblock %}
+    <div id='div-gpt-ad-1698303309422-0' class="ad leaderboard leaderboard-top">
+      <script>
+        googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1698303309422-0');
+      });
+      </script>
+    </div>
 		{{ include('layout/footer.twig') }}
 		<!-- JQuery -->
 		 <script type="text/javascript" src="{{ function('get_stylesheet_directory_uri') }}/assets/vendor/jquery/jquery-3.2.1.min.js"></script>

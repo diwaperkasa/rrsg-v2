@@ -126,7 +126,7 @@ a:hover {
 }
 
 .img-hover-zoom:hover img {
-  transform: scale(1.3)
+  transform: scale(1.05)
 }
 /* End Style zoom effect */
 
@@ -206,4 +206,13 @@ a:hover {
   padding-left: 10px;
   padding-right: 35px;
   width: 300px;
+}
+
+.nav-scroller nav a {
+  position: relative;
+  font-family: "Lato", sans-serif;
+}
+
+.owl-carousel .owl-item img {
+  height: auto;
 }
