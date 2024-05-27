@@ -1,4 +1,4 @@
-<div id='div-gpt-ad-1698301711475-0' class="ad leaderboard leaderboard-top">
+<div id='div-gpt-ad-1698301711475-0' class="ad leaderboard leaderboard-header">
   <script>
     googletag.cmd.push(function() {
 		googletag.display('div-gpt-ad-1698301711475-0');
@@ -43,16 +43,20 @@
 				<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/RR-SINGAPORE_Logo2019_Outlined.png" alt="logo" height="35">
 			</a>
 			<div class="navbar-toggler search-container p-0">
-				<div class="search-icon-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
-						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-					</svg>
-				</div>
-				<div class="search-input">
-					<form method="GET" action="/">
-						<input name="s" type="search" class="search-bar" placeholder="Search...">
-					</form>
-				</div>
+				<form method="GET" action="/">
+					<div class="search-container" style="float:right">
+						<div class="search-icon-btn">
+							<button type="submit" class="bg-transparent border-0 text-danger">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+								</svg>
+							</button>
+						</div>
+						<div class="search-input">
+							<input name="s" type="search" class="search-bar" placeholder="Search..." required/>
+						</div>
+					</div>
+				</form>
 			</div>
 			<div class="collapse navbar-collapse">
 				<a class="navbar-brand" href="/">
@@ -87,18 +91,20 @@
 				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'investment')) }}">Investment</a>
 				<a class="p-2 link-secondary text-uppercase fs-5" href="{{ function('get_permalink', function('get_page_by_path', 'robb-spotlight')) }}">Robb Spotlight</a>
 			</div>
-			<div class="search-container" style="float:right">
-				<div class="search-icon-btn">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
-						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-					</svg>
+			<form method="GET" action="/">
+				<div class="search-container" style="float:right">
+					<div class="search-icon-btn">
+						<button type="submit" class="bg-transparent border-0 text-danger">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+							</svg>
+						</button>
+					</div>
+					<div class="search-input">
+						<input name="s" type="search" class="search-bar" placeholder="Search..." required/>
+					</div>
 				</div>
-				<div class="search-input">
-					<form method="GET" action="/">
-						<input name="s" type="search" class="search-bar" placeholder="Search...">
-					</form>
-				</div>
-			</div>
+			</form>
 		</nav>
 	</div>
 	<!-- Horizontal Scrolling Nav-->

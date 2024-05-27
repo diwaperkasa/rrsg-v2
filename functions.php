@@ -77,8 +77,6 @@ function rrsg_render(string $path, array $data = [])
         'banner' => get_slider(),
     ];
 
-    // die(json_encode($context['post']));
-
     return \Timber\Timber::compile("page/{$path}", $templateData);
 }
 
@@ -218,6 +216,30 @@ function get_latest_article()
         'order'                  => 'DESC',
         'orderby'                => 'date',
     );
+    $query = new WP_Query( $args );
+    wp_reset_postdata();
+
+    return $query;
+}
+
+function get_article(string $category, int $limit = 5, int $page = 1)
+{
+    $args = [
+        'posts_per_page' => $limit,
+        'paged' => $page,
+        'post_status' => 'publish',
+        'post_type' => ['post','package','features'],
+        'order' => 'DESC',
+        'orderby'   => 'post__in',
+        'tax_query' => [
+            [
+                'taxonomy' => 'category',
+                'terms' => $category,
+                'field' => 'slug',
+            ]
+        ]
+    ];
+
     $query = new WP_Query( $args );
     wp_reset_postdata();
 

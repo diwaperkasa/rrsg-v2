@@ -17,28 +17,11 @@
             color: #9c6e6e;
         }
 
-		.wp-caption {
-			margin-bottom: 2em;
-			max-width: 100%;
-		}
-
-		.wp-caption .wp-caption-text {
-			padding: 0.4em;
-			font-size: 0.9em;
-			font-style: italic;
-			text-align: center;
-		}
-
         #section-MostPopular img {
             max-width: 600px;
             height: auto;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        .wp-post-image {
-            max-width: 100%;
-            height: auto;
         }
 	</style>
 {% endblock %}
@@ -71,14 +54,14 @@
 					<span class="date-post">{{ function('wp_date', 'j F, Y', function('strtotime', data.post.post_date)) }}</span>
 				</div>
 				<div class="img-hover-zoom">
-					{{ function('get_the_post_thumbnail', data.post) }}
+					{{ function('get_the_post_thumbnail', data.post, 'full') }}
 				</div>
-                <div id='div-gpt-ad-1698302925146-0' class="ad leaderboard leaderboard-top">
-                <script>
-                    googletag.cmd.push(function() {
-                        googletag.display('div-gpt-ad-1698302925146-0');
-                    });
-                </script>
+                <div id='div-gpt-ad-1698302925146-0' class="ad leaderboard leaderboard-mid">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1698302925146-0');
+                        });
+                    </script>
                 </div>
 				<div class="row paragraph mb-5">
 					<div class="col-md-8">
@@ -87,7 +70,7 @@
 						</div>
 					</div>
                     <div class="col-md-4">
-                        <div id='div-gpt-ad-3035191-5' class="ad leaderboard leaderboard-top">
+                        <div id='div-gpt-ad-3035191-5' class="ad leaderboard leaderboard-vertical">
                             <script>
                                 googletag.cmd.push(function() {
                                     googletag.display('div-gpt-ad-3035191-5');
@@ -117,28 +100,30 @@
 		            </div>
 		        </section> #}
 		<section id="section-MostPopular">
-			<div class="mt-5">
-				<h2 class="text-center mb-4">You May Also Like</h2>
-                {%
-                    set popular_articles = function('get_popular_article', data.post)
-                %}
-				<div class="owl-carousel latest-carousel owl-theme">
-                    {% for article in popular_articles.posts %}
-                        <div class="item">
-                            <div class="card rounded-0 border-0">
-                                <div class="img-hover-zoom">
-                                    {{ function('get_the_post_thumbnail', article) }}
-                                </div>
-                                <div class="card-body text-center">
-                                    {{ function('primary_category', article) }}
-                                    <br>
-                                    <a href="{{ function('the_permalink', article) }}"><h5>{{ function('short_title', article) }}</h5></a>
+            <div class="container">
+                <div class="mt-5">
+                    <h2 class="text-center mb-4">You May Also Like</h2>
+                    {%
+                        set popular_articles = function('get_popular_article', data.post)
+                    %}
+                    <div class="owl-carousel latest-carousel owl-theme">
+                        {% for article in popular_articles.posts %}
+                            <div class="item">
+                                <div class="card rounded-0 border-0">
+                                    <div class="img-hover-zoom">
+                                        {{ function('get_the_post_thumbnail', article) }}
+                                    </div>
+                                    <div class="card-body text-center">
+                                        {{ function('primary_category', article) }}
+                                        <br>
+                                        <a href="{{ function('the_permalink', article) }}"><h5>{{ function('short_title', article) }}</h5></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
-				</div>
-			</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
 		</section>
 	</main>
 {% endblock %}

@@ -54,54 +54,50 @@
 		<section id="section-newsfeed">
 			<div class="container">
 				<div class="mb-2">
+					{% set articles = function('get_article', 'watches-jewellery', 3) %}
 					<div class="d-flex align-items-center my-3">
 						<h2 class="me-4">WACTHES</h2>
-						<a href="#" class="btn btn-secondary rounded-0">READ MORE HERE</a>
+						<a href="/watches-jewellery" class="btn btn-secondary rounded-0">READ MORE HERE</a>
 					</div>
 					<div class="mb-2">
-						<div class="card rounded-0 border-0">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch1.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body text-center">
-								<a href="stories.html" class="h3 mb-2">Introducing the Audemars Piguet Royal Oak Tourbillon Tamara Ralph</a>
-								<p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p>
-								<span>25 January, 2024</span>
-								-
-								<span>Alvin Wong</span>
-							</div>
-						</div>
+						{% for article in articles.posts %}
+							{% if (loop.index == 1) %}
+								<div class="card rounded-0 border-0">
+									<div class="img-hover-zoom">
+										{{ function('get_the_post_thumbnail', article) }}
+									</div>
+									<div class="card-body text-center">
+										<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
+										<p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p>
+										<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+										-
+										<span>Alvin Wong</span>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
 						<div class="row">
 							<div class="col-md-7">
 								<div class="row">
-									<div class="col-6 col-md-12">
-										<div class="card rounded-0 border-0">
-											<div class="img-hover-zoom">
-												<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch2.jpg" class="card-img-top" alt="...">
+									{% for article in articles.posts %}
+										{% if (loop.index > 1) %}
+											<div class="col-6 col-md-12">
+												<div class="card rounded-0 border-0">
+													<div class="img-hover-zoom">
+														{{ function('get_the_post_thumbnail', article) }}
+													</div>
+													<div class="card-body text-center">
+														<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
+														<div>
+															<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+															-
+															<span>Carol Besler</span>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="card-body text-center">
-												<a href="stories.html" class="h3 mb-2">Vacheron Constantin proves quartz can be luxurious too</a>
-												<br>
-												<span>23 January, 2024</span>
-												-
-												<span>Carol Besler</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-6 col-md-12">
-										<div class="card rounded-0 border-0">
-											<div class="img-hover-zoom">
-												<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/watch3.jpg" class="card-img-top" alt="...">
-											</div>
-											<div class="card-body text-center">
-												<a href="stories.html" class="h3 mb-2">The five most expensive watches sold at auction in 2023</a>
-												<br>
-												<span>4 January, 2024</span>
-												-
-												<span>Cait Bazemore</span>
-											</div>
-										</div>
-									</div>
+										{% endif %}
+									{% endfor %}
 								</div>
 							</div>
 							<div class="col-md-5"></div>
@@ -109,102 +105,94 @@
 					</div>
 				</div>
 				<div class="mb-2">
+					{% set articles = function('get_article', 'style', 3) %}
 					<div class="d-flex align-items-center my-3">
 						<h2 class="me-4">STYLE</h2>
-						<a href="#" class="btn btn-secondary rounded-0">READ MORE HERE</a>
+						<a href="/style" class="btn btn-secondary rounded-0">READ MORE HERE</a>
 					</div>
 					<div class="mb-2">
-						<div class="card rounded-0 border-0">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/style1.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body text-center">
-								<a href="stories.html" class="h3 mb-2">The Gucci Ancora campaign celebrates personal expression</a>
-								<p class="text-secondary mb-2">The Gucci Ancora campaign is an ode to individuality and grace, heralding the essence of personal expression through a curated selection of essential pieces designed for everyday elegance</p>
-								<span>9 January, 2024</span>
-								-
-								<span>Amos Chin</span>
-							</div>
-						</div>
+						{% for article in articles.posts %}
+							{% if (loop.index == 1) %}
+								<div class="card rounded-0 border-0">
+									<div class="img-hover-zoom">
+										{{ function('get_the_post_thumbnail', article) }}
+									</div>
+									<div class="card-body text-center">
+										<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
+										<p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p>
+										<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+										-
+										<span>Alvin Wong</span>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
 						<div class="row">
-							<div class="col-6">
-								<div class="card rounded-0 border-0">
-									<div class="img-hover-zoom">
-										<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/style2.jpg" class="card-img-top" alt="...">
+							{% for article in articles.posts %}
+								{% if (loop.index > 1) %}
+									<div class="col-6">
+										<div class="card rounded-0 border-0">
+											<div class="img-hover-zoom">
+												{{ function('get_the_post_thumbnail', article) }}
+											</div>
+											<div class="card-body text-center">
+												<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
+												<div>
+													<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+													-
+													<span>Carol Besler</span>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="card-body text-center">
-										<a href="stories.html" class="h3 mb-2">Moschino appoints Adrian Appiolaza as creative director</a>
-										<br>
-										<span>31 January, 2024</span>
-										-
-										<span>Amos Chin</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="card rounded-0 border-0">
-									<div class="img-hover-zoom">
-										<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/style3.jpg" class="card-img-top" alt="...">
-									</div>
-									<div class="card-body text-center">
-										<a href="stories.html" class="h3 mb-2">Robb Reports: Fendi Women’s Spring/Summer 2024 couture collection</a>
-										<br>
-										<span>29 January, 2024</span>
-										-
-										<span>Amos Chin</span>
-									</div>
-								</div>
-							</div>
+								{% endif %}
+							{% endfor %}
 						</div>
 					</div>
 				</div>
 				<div class="mb-2">
+					{% set articles = function('get_article', 'gear', 3) %}
 					<div class="d-flex align-items-center my-3">
 						<h2 class="me-4">GEAR</h2>
-						<a href="#" class="btn btn-secondary rounded-0">READ MORE HERE</a>
+						<a href="/gear" class="btn btn-secondary rounded-0">READ MORE HERE</a>
 					</div>
 					<div class="mb-2">
-						<div class="card rounded-0 border-0">
-							<div class="img-hover-zoom">
-								<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/gear1.jpg" class="card-img-top" alt="...">
-							</div>
-							<div class="card-body text-center">
-								<a href="stories.html" class="h3 mb-2">This fully-restored 1969 Shelby was once lost to theft and wreckage</a>
-								<p class="text-secondary mb-2">Restored ’69 Shelby GT350 to star in Phoenix auction</p>
-								<span>26 January, 2024</span>
-								-
-								<span>Haziq Yusof</span>
-							</div>
-						</div>
+						{% for article in articles.posts %}
+							{% if (loop.index == 1) %}
+								<div class="card rounded-0 border-0">
+									<div class="img-hover-zoom">
+										{{ function('get_the_post_thumbnail', article) }}
+									</div>
+									<div class="card-body text-center">
+										<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
+										<p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p>
+										<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+										-
+										<span>Alvin Wong</span>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
 						<div class="row">
-							<div class="col-6">
-								<div class="card rounded-0 border-0">
-									<div class="img-hover-zoom">
-										<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/gear2.jpg" class="card-img-top" alt="...">
+							{% for article in articles.posts %}
+								{% if (loop.index > 1) %}
+									<div class="col-6">
+										<div class="card rounded-0 border-0">
+											<div class="img-hover-zoom">
+												{{ function('get_the_post_thumbnail', article) }}
+											</div>
+											<div class="card-body text-center">
+												<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
+												<div>
+													<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+													-
+													<span>Carol Besler</span>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="card-body text-center">
-										<a href="stories.html" class="h3 mb-2">Moschino appoints Adrian Appiolaza as creative director</a>
-										<br>
-										<span>29 January, 2024</span>
-										-
-										<span>Angus Mackenzie</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="card rounded-0 border-0">
-									<div class="img-hover-zoom">
-										<img src="{{ function('get_stylesheet_directory_uri') }}/assets/img/gear3.jpg" class="card-img-top" alt="...">
-									</div>
-									<div class="card-body text-center">
-										<a href="stories.html" class="h3 mb-2">Ferrari is building its first sailing yacht for ocean racing</a>
-										<br>
-										<span>30 January, 2024</span>
-										-
-										<span>Rachel Cormack</span>
-									</div>
-								</div>
-							</div>
+								{% endif %}
+							{% endfor %}
 						</div>
 					</div>
 				</div>
