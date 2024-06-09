@@ -45,9 +45,11 @@ function short_title($post) {
 function primary_category($post) {
 	$categories = get_the_category($post->ID);
 	$output = '';
-	$i=0;foreach( $categories as $category ) {
-		if($category->parent == 0 && $category->slug != 'business' && $category->slug != 'leisure'){
-			if($i!=0)break;
+	$i=0;
+    
+    foreach( $categories as $category ) {
+		if ($category->parent == 0 && $category->slug != 'business' && $category->slug != 'leisure') {
+			if($i!=0) break;
 			$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '"><span class="cat-'.$category->slug.'">' . esc_html( $category->name ) . '</span></a>' . $separator;
 			$i++;
 		}
@@ -245,3 +247,65 @@ function get_article(string $category, int $limit = 5, int $page = 1)
 
     return $query;
 }
+
+function get_category_article(int $limit = 5)
+{
+    global $wp;
+
+    $current_slug = add_query_arg(array(), $wp->request);
+    $articles = get_article($current_slug, $limit);
+
+    return $articles;
+}
+
+//Ajax Load More
+function be_load_more_js() {
+    global $wp;
+
+    $current_slug = add_query_arg(array(), $wp->request);
+    $query = array(
+        'post__not_in'          => array( get_queried_object_id() ),
+        'posts_per_page'        => 6,
+        'post_status'           => 'publish',
+        'post_type'             => ['post','package','features'],
+        'order'                 => 'DESC',
+        'orderby'               => 'post__in',
+        'tax_query' => [
+            [
+                'taxonomy' => 'category',
+                'terms' => $current_slug,
+                'field' => 'slug',
+            ]
+        ]
+    );
+
+    $args = array(
+        'nonce' => wp_create_nonce( 'be-load-more-nonce' ),
+        'url'   => admin_url( 'admin-ajax.php' ),
+        'query' => $query,
+    );
+
+    wp_enqueue_script( 'be-load-more', get_stylesheet_directory_uri() . '/assets/js/load-more.js', array ( 'jquery' ));
+    wp_localize_script( 'be-load-more', 'beloadmore', $args );
+}
+add_action( 'wp_enqueue_scripts', 'be_load_more_js' );
+  /**
+   * AJAX Load More
+   *
+   */
+function be_ajax_load_more() {
+    $args     = (isset($_POST['query'])) ? $_POST['query'] : [];
+    $query = new WP_Query( $args );
+    wp_reset_postdata();
+
+    $templateData = [
+        'articles' => $query,
+    ];
+
+    $data = rrsg_render('component/post-item.twig', $templateData);
+	wp_send_json_success( $data );
+	wp_die();
+}
+
+add_action( 'wp_ajax_be_ajax_load_more', 'be_ajax_load_more' );
+add_action( 'wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more' );
