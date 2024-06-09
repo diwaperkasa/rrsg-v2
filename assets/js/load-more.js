@@ -15,6 +15,7 @@ jQuery(function ($) {
 
 			var data = {
 				action: "be_ajax_load_more",
+				nonce: beloadmore.nonce,
 				query: query,
 			};
 
