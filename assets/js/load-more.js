@@ -1,37 +1,42 @@
 jQuery(function ($) {
-	var button = $(".load-more");
-	var loading = false;
+	let loading = false;
 	let page = 2;
 
-	$('.load-more').click(function () {
+	$('.load-more').click(function (e) {
 		if (!loading) {
-			loading = true;
-			$(".load-more").addClass("no-underline");
-			$("body.category-business .post-listing").addClass("hidelast");
-			$(".load-more").html('<div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>');
-
 			let query = beloadmore.query;
 			query.paged = page;
 
-			var data = {
+			const data = {
 				action: "be_ajax_load_more",
 				nonce: beloadmore.nonce,
 				query: query,
 			};
 
-			$.post(beloadmore.url, data, function (res) {
-				if (res.success) {
-					$(".post-listing").append(res.data);
-					$(".button-container").append(button);
-					$(".load-more").removeClass("no-underline");
-					$(".load-more").html("<span>View more stories</span>");
-					++page;
+			$.ajax({
+				type: "POST",
+				url: beloadmore.url,
+				data: data,
+				beforeSend: function() {
+					loading = true;
+
+					$(".load-more")
+						.addClass("no-underline")
+						.html('<div class="loader"></div>');
+				},
+				success: function(res) {
+					if (res.success) {
+						$(".post-listing").append(res.data);
+						++page;
+					}
+				},
+				complete: function() {
 					loading = false;
-				} else {
-					console.log(res);
-				}
-			}).fail(function (xhr, textStatus, e) {
-				console.log(xhr.responseText);
+
+					$(".load-more")
+						.removeClass("no-underline")
+						.html("<span>View more stories</span>");
+				},
 			});
 		}
 	});
