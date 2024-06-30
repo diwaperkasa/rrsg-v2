@@ -16,6 +16,8 @@ function crb_load()
 
     add_filter('timber/loader/twig', 'timber_environment');
     add_filter('timber/twig', 'timber_add_function');
+
+    require_once(get_stylesheet_directory() . '/google/api_rr_analytics.php');
 }
 
 function timber_add_function(\Twig\Environment $twig)
@@ -30,32 +32,34 @@ function timber_add_function(\Twig\Environment $twig)
     return $twig;
 }
 
-function short_title($post) {
-	$short_title = get_field('short_title', $post->ID);
+function short_title($post)
+{
+    $short_title = get_field('short_title', $post->ID);
 
-	if (!empty($short_title)) {
-		/* echo ucfirst(strtolower($short_title)); */
-		return $short_title;
-	} else {
-		/* echo ucfirst(strtolower($post->post_title)); */
-		return $post->post_title;
-	}
+    if (!empty($short_title)) {
+        /* echo ucfirst(strtolower($short_title)); */
+        return $short_title;
+    } else {
+        /* echo ucfirst(strtolower($post->post_title)); */
+        return $post->post_title;
+    }
 }
 
-function primary_category($post) {
-	$categories = get_the_category($post->ID);
-	$output = '';
-	$i=0;
-    
-    foreach( $categories as $category ) {
-		if ($category->parent == 0 && $category->slug != 'business' && $category->slug != 'leisure') {
-			if($i!=0) break;
-			$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '"><span class="cat-'.$category->slug.'">' . esc_html( $category->name ) . '</span></a>' . $separator;
-			$i++;
-		}
-	}
+function primary_category($post)
+{
+    $categories = get_the_category($post->ID);
+    $output = '';
+    $i = 0;
 
-	return trim($output);
+    foreach ($categories as $category) {
+        if ($category->parent == 0 && $category->slug != 'business' && $category->slug != 'leisure') {
+            if ($i != 0) break;
+            $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $category->name)) . '"><span class="cat-' . $category->slug . '">' . esc_html($category->name) . '</span></a>' . $separator;
+            $i++;
+        }
+    }
+
+    return trim($output);
 }
 
 function timber_environment(\Twig\Environment $twig)
@@ -122,20 +126,20 @@ function get_banner()
         'posts_per_page'         => '10',
         'order'                  => 'DESC',
         'orderby'                => 'ID',
-        'meta_query' 			 => [
+        'meta_query'              => [
             [
-                'key'		=> 'banner_start_date',
-                'compare'	=> '<=',
-                'value'		=> $today,
+                'key'        => 'banner_start_date',
+                'compare'    => '<=',
+                'value'        => $today,
             ],
             [
-                'key'		=> 'banner_end_date',
-                'compare'	=> '>=',
-                'value'		=> $today,
+                'key'        => 'banner_end_date',
+                'compare'    => '>=',
+                'value'        => $today,
             ]
         ],
     ];
-    $banners = new WP_Query( $banner_args );
+    $banners = new WP_Query($banner_args);
     wp_reset_postdata();
 
     return $banners;
@@ -144,17 +148,17 @@ function get_banner()
 function get_slider()
 {
     $articles = get_field('articles');
-	$postcount = get_field('how_many_articles_to_show');
-	
-    $args = array (
-        'post_type'              => array('post', 'features','package'),
-		'post_status'            => 'publish',
-		'post__in'				 => $articles,
+    $postcount = get_field('how_many_articles_to_show');
+
+    $args = array(
+        'post_type'              => array('post', 'features', 'package'),
+        'post_status'            => 'publish',
+        'post__in'                 => $articles,
         'posts_per_page'         => $postcount,
         'order'                  => 'DESC',
         'orderby'                => 'post__in',
     );
-    $query = new WP_Query( $args );
+    $query = new WP_Query($args);
     wp_reset_postdata();
 
     return $query;
@@ -162,7 +166,7 @@ function get_slider()
 
 function get_author_photo($post)
 {
-    $term_list = wp_get_post_terms( $post->ID, 'writer', array( 'fields' => 'all' ) );
+    $term_list = wp_get_post_terms($post->ID, 'writer', array('fields' => 'all'));
     $user_photo = get_field('photo', 'term_' . $term_list[0]->term_id);
 
     return $user_photo;
@@ -170,19 +174,19 @@ function get_author_photo($post)
 
 function parent_category_link($post)
 {
-	if (has_category('business', $post->ID)) {
-		$category_name = 'Business';
-		$category_id = get_cat_ID( $category_name );
-    	$category_link = get_category_link( $category_id );
+    if (has_category('business', $post->ID)) {
+        $category_name = 'Business';
+        $category_id = get_cat_ID($category_name);
+        $category_link = get_category_link($category_id);
 
-        return esc_url( $category_link );
-	} elseif (has_category('leisure', $post->ID)) {
-		$category_name = 'Leisure';
-		$category_id = get_cat_ID( $category_name );
-    	$category_link = get_category_link( $category_id );
+        return esc_url($category_link);
+    } elseif (has_category('leisure', $post->ID)) {
+        $category_name = 'Leisure';
+        $category_id = get_cat_ID($category_name);
+        $category_link = get_category_link($category_id);
 
-        return esc_url( $category_link );
-	}
+        return esc_url($category_link);
+    }
 }
 
 function get_popular_article($post)
@@ -192,7 +196,7 @@ function get_popular_article($post)
     $category = get_the_category();
     $category_id = $category[0]->cat_ID;
 
-    foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+    foreach ($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
 
     $args = [
         'category__in' => $category_id,
@@ -203,7 +207,7 @@ function get_popular_article($post)
         'orderby' => 'rand'
     ];
 
-    $loop = new WP_Query( $args );
+    $loop = new WP_Query($args);
     wp_reset_postdata();
 
     return $loop;
@@ -211,14 +215,14 @@ function get_popular_article($post)
 
 function get_latest_article()
 {
-    $args = array (
-        'post_type'              => array('post','package','features'),
+    $args = array(
+        'post_type'              => array('post', 'package', 'features'),
         'nopaging'               => false,
         'posts_per_page'         => '6',
         'order'                  => 'DESC',
         'orderby'                => 'date',
     );
-    $query = new WP_Query( $args );
+    $query = new WP_Query($args);
     wp_reset_postdata();
 
     return $query;
@@ -230,7 +234,7 @@ function get_article(string $category, int $limit = 5, int $page = 1)
         'posts_per_page' => $limit,
         'paged' => $page,
         'post_status' => 'publish',
-        'post_type' => ['post','package','features'],
+        'post_type' => ['post', 'package', 'features'],
         'order' => 'DESC',
         'orderby'   => 'post__in',
         'tax_query' => [
@@ -242,7 +246,7 @@ function get_article(string $category, int $limit = 5, int $page = 1)
         ]
     ];
 
-    $query = new WP_Query( $args );
+    $query = new WP_Query($args);
     wp_reset_postdata();
 
     return $query;
@@ -258,16 +262,43 @@ function get_category_article(int $limit = 5)
     return $articles;
 }
 
+function get_most_popular_article()
+{
+    $posts_most_pageviews_id = rr_fetch_post_ids_popular();
+
+    $args = [
+        'post_type'           => ['post', 'features', 'package'],
+        'post__in'            => $posts_most_pageviews_id,
+        'orderby'             => 'post__in',
+        'posts_per_page'      => '6',
+    ];
+
+    $query = new WP_Query($args);
+    wp_reset_postdata();
+
+    return $query;
+}
+
+function get_current_url()
+{
+    global $wp;
+    $current_url = add_query_arg( array(), $wp->request );
+    $part = explode("/", $current_url);
+
+    return current($part);
+}
+
 //Ajax Load More
-function be_load_more_js() {
+function be_load_more_js()
+{
     global $wp;
 
     $current_slug = add_query_arg(array(), $wp->request);
     $query = array(
-        'post__not_in'          => array( get_queried_object_id() ),
+        'post__not_in'          => array(get_queried_object_id()),
         'posts_per_page'        => 6,
         'post_status'           => 'publish',
-        'post_type'             => ['post','package','features'],
+        'post_type'             => ['post', 'package', 'features'],
         'order'                 => 'DESC',
         'orderby'               => 'post__in',
         'tax_query' => [
@@ -280,22 +311,23 @@ function be_load_more_js() {
     );
 
     $args = array(
-        'nonce' => wp_create_nonce( 'be-load-more-nonce' ),
-        'url'   => admin_url( 'admin-ajax.php' ),
+        'nonce' => wp_create_nonce('be-load-more-nonce'),
+        'url'   => admin_url('admin-ajax.php'),
         'query' => $query,
     );
 
-    wp_enqueue_script( 'be-load-more', get_stylesheet_directory_uri() . '/assets/js/load-more.js', array ( 'jquery' ));
-    wp_localize_script( 'be-load-more', 'beloadmore', $args );
+    wp_enqueue_script('be-load-more', get_stylesheet_directory_uri() . '/assets/js/load-more.js', array('jquery'));
+    wp_localize_script('be-load-more', 'beloadmore', $args);
 }
-add_action( 'wp_enqueue_scripts', 'be_load_more_js' );
-  /**
-   * AJAX Load More
-   *
-   */
-function be_ajax_load_more() {
+add_action('wp_enqueue_scripts', 'be_load_more_js');
+/**
+ * AJAX Load More
+ *
+ */
+function be_ajax_load_more()
+{
     $args     = (isset($_POST['query'])) ? $_POST['query'] : [];
-    $query = new WP_Query( $args );
+    $query = new WP_Query($args);
     wp_reset_postdata();
 
     $templateData = [
@@ -303,9 +335,9 @@ function be_ajax_load_more() {
     ];
 
     $data = rrsg_render('component/post-item.twig', $templateData);
-	wp_send_json_success( $data );
-	wp_die();
+    wp_send_json_success($data);
+    wp_die();
 }
 
-add_action( 'wp_ajax_be_ajax_load_more', 'be_ajax_load_more' );
-add_action( 'wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more' );
+add_action('wp_ajax_be_ajax_load_more', 'be_ajax_load_more');
+add_action('wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more');

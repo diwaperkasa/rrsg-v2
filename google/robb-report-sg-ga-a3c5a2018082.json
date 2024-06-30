@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "robb-report-sg-ga",
+  "private_key_id": "a3c5a20180824299ec167a2af386561f8273df9a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDkPTvv60WKUHH+\ncvBfRxPl/WsWsFw+W4gNgWhspP/QXfNt+JoHvNYj0Ev85B6Jj0ThxwMJESxQArtm\nEQAe351HqYvAwTe8oA3ZCv0T52c3BWVkqnkGAoxhvNrkQXIVNaOBIgXsLRpFqozD\no1Yc/YDpctFCfNNVBc42q1SDPly3g1BjKiE9O9aWgPw009wPTUv5BZhy2EkzC3uE\nRvE1WfhDHE3rXMgJOlR0AuWbcJ4W5uOmKmIojpwtROmz5upSijA/Y34kINmWdHAS\nBwDy8yTBRdsoyVa36Jd5J3jde04dHpNZdrOGJ/oqLvAnyMetKJFwco1DlpGqBimP\n+VkbWctBAgMBAAECggEAIylX1tdHqE5KXCki5Nq+CFwpJ56rJ07R6pq5a/tjZEYF\nCY0XVa0peZejt+WrhVpVV0m3Kv9tSd+R3+CAmeut1EDHbz4/svHJZbAusDv3B7VE\nxeRerqatL9AjZ1oPFDtmNq+iJUdcLnK0Kt46lvlq5wwG4ZektbV7llUrY5NeP0Wo\nxxw4KN+bY95NmBD9IQYx9iXPd3DfGcUOa62AAxEQ2Agr2PSVqyC1RJC+cRVhPOzo\nbzm8ozAvf8oOXuIoN12UdewIlaX6CNVIV+hKTzoRlRfHzgg/5IoFguL7iRh71xgk\nrkBnFNWptZCENNlmYl0yQjYIdrqSvq74QUa20g0K3QKBgQD00EWCSFzVFjC5MU1i\nKEbBdHDytXlZaxmie5k/RaCdiFrCQi2ED9d7qGLbRoDYUp1EJZH16m++3v3A9Iih\nF2/ZcuYsaWgIkRp7VzArw36B9be0xmuusszghb28kzMUY1+GrqeqK48+DNd3yeMW\n9vTlFzZmDBM/codD+Ya+oprYcwKBgQDuqxUens2A89VmyAak/W6K0D96k/B/qJnd\n84IqyM84xpRy/rcqOFOQcKpVqNw05tOtCfXCwiKvKLH0F/kl3yjheTeafdQdokUg\nQJvD6dgyIq9vqJu6pRaXbXI15PF1s906gBlfAg1qpjkgCyERR+PAyI5hs6DdkL8m\nW16ct6YEewKBgGbeRPbTlT5sjpiioNOH/QM4/GTf4Fe0axcdPG2bwjuvmgNab2m4\nhmENhkyBOY6sWCzUZJqiocXgSVwU5HxcLsF+SD2NJQvEfQ4qurEI+lV9fG3XmlPU\nCcamK+3bJHGCuBcNuKIGn7ABEWDiUivKJWlF8bO7izLz2uazKO1dwhcFAoGBALGd\nWEZFYCJLU9D9oxQ+FnnvqI4McrpOOtPWWFSGxNA32FoL/TvKV0Xy0pCU7evgrD7m\nXqLl3vIDkwtYm+33OXEyyJKMecLj9BWgf0s5R89nyK+MBvjLyxg+NvSswJUbmdPj\naP4vhNSNh421OpKlsXTSzEMhbuH0yow9CxgOA9rpAoGAYP5zS3ycA0miM+iZ/luV\n0dG3mbkNGrDd4OHqAm83dUcoOrRV4u/ZUBIQb1dpJHY0vottrWIWN0cJDy/hbkBk\nwBNzuY6C1T92N95IBN22Hn3/7WvrUndu2WRgJgIeo/ZAZ0xqtsKzklSzzSsyPqoK\nTVyP5ndfbntS5ZXyVOzPXEo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "robb-report-imv-sg-ga@robb-report-sg-ga.iam.gserviceaccount.com",
+  "client_id": "116762462860549083408",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/robb-report-imv-sg-ga%40robb-report-sg-ga.iam.gserviceaccount.com"
+}
