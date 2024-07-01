@@ -239,3 +239,8 @@ a:hover {
   max-width: 100%;
   height: auto;
 }
+
+.leaderboard-vertical {
+  position: sticky;
+  top: 10rem;
+}
