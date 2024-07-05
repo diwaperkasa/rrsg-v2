@@ -356,7 +356,7 @@ function rrsg_custom_post_gallery($value, $attr, $instance)
 			'icontag'    => $html5 ? 'div' : 'dt',
 			'captiontag' => $html5 ? 'figcaption' : 'dd',
 			'columns'    => 3,
-			'size'       => 'thumbnail',
+			'size'       => 'large',
 			'include'    => '',
 			'exclude'    => '',
 			'link'       => '',
@@ -509,8 +509,6 @@ function rrsg_custom_post_gallery($value, $attr, $instance)
 	 *                              for the gallery shortcode output.
 	 */
 	$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
-
-	$i = 0;
 
     if (!empty($attachments)) {
         $output .= "<div class='carousel js-flickity'>";
