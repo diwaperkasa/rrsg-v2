@@ -521,7 +521,7 @@ function rrsg_custom_post_gallery($value, $attr, $instance)
             } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
                 $image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
             } else {
-                $image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
+                $image_output = wp_get_attachment_image( $id, $atts['size'], false, false, false, $attr );
             }
     
             $image_meta = wp_get_attachment_metadata( $id );
@@ -553,5 +553,3 @@ function rrsg_custom_post_gallery($value, $attr, $instance)
 
 	return $output;
 }
-
-add_filter( 'post_gallery', 'rrsg_custom_post_gallery' , 10, 3);
