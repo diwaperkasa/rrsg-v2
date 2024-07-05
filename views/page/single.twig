@@ -23,6 +23,21 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+		.carousel-cell {
+			width: 100%;
+			text-align: center;
+		}
+
+		.carousel-cell img {
+			width: 100%;
+			height: auto;
+		}
+
+		.carousel:after {
+			content: 'flickity';
+			display: none; /* hide :after */
+		}
 	</style>
 {% endblock %}
 
@@ -149,6 +164,12 @@
             items: 2,
         });
 
-        const slider = $('.gallery-size-thumbnail').flickity();
+        const slider = $('.js-flickity').flickity({
+			imagesLoaded: true,
+			autoPlay: true,
+			autoPlay: true,
+			watchCSS: true,
+			pageDots: false
+		});
     </script>
 {% endblock %}
