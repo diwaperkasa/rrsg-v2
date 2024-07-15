@@ -18,6 +18,7 @@ function crb_load()
     add_filter('timber/twig', 'timber_add_function');
 
     require_once(get_stylesheet_directory() . '/google/api_rr_analytics.php');
+    require_once(get_stylesheet_directory() . '/shortcode/functions.php');
 }
 
 function timber_add_function(\Twig\Environment $twig)
