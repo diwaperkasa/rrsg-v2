@@ -188,7 +188,7 @@ a:hover {
 .search-input input.search-bar:focus {
   padding-left: 10px;
   padding-right: 35px;
-  width: 300px;
+  width: 200px;
 }
 
 /* transition effect */
@@ -205,7 +205,7 @@ a:hover {
 .search-container:hover > .search-input input.search-bar {
   padding-left: 10px;
   padding-right: 35px;
-  width: 300px;
+  width: 200px;
 }
 
 .nav-scroller nav a {

@@ -57,7 +57,7 @@ function button($atts, $content = null)
 {
     return "
         <div class='text-center px-4'>
-            <a " . (isset($atts['target']) ? "target={$atts['target']}" : null) . " href='{$atts['link']}' class='btn primary w-100 bg-dark text-white " . (isset($atts['expand']) ? "expand" : null) . "' style='" . (isset($atts['radius']) ? "border-radius:{$atts['radius']}" : null) . "'>{$atts['text']}</a>
+            <a " . (isset($atts['target']) ? "target={$atts['target']}" : null) . " href='{$atts['link']}' class='button btn primary w-100 bg-dark text-white " . (isset($atts['expand']) ? "expand" : null) . "' style='" . (isset($atts['radius']) ? "border-radius:{$atts['radius']}" : null) . "'>{$atts['text']}</a>
         </div>
     ";
 }

@@ -55,7 +55,7 @@ function primary_category($post)
     foreach ($categories as $category) {
         if ($category->parent == 0 && $category->slug != 'business' && $category->slug != 'leisure') {
             if ($i != 0) break;
-            $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $category->name)) . '"><span class="cat-' . $category->slug . '">' . esc_html($category->name) . '</span></a>' . $separator;
+            $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $category->name)) . '"><span class="cat-' . $category->slug . '">' . esc_html($category->name) . '</span></a>';
             $i++;
         }
     }

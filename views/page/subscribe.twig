@@ -10,6 +10,11 @@
         .col-inner:has(> .message-box) {
             padding-bottom: 4rem;
             box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+            margin-bottom: 3rem !important;
+        }
+
+        #subscribe-section a {
+            color: #b09d6e;
         }
     </style>
 {% endblock %}
@@ -17,14 +22,16 @@
 {% block content %}
     <main>
         <div class="container">
-            <div class="row align-middle align-center mb-4">
-                <div class="col small-12 large-12 category-head">
-                    <div class="col-inner text-center">
-                        <h2><span style="font-size: 130%;"></span>Subscribe to our print and digital issues</h2>
+            <section id="subscribe-section">
+                <div class="row align-middle align-center mb-4">
+                    <div class="col small-12 large-12 category-head">
+                        <div class="col-inner text-center">
+                            <h2><span style="font-size: 130%;"></span>Subscribe to our print and digital issues</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{ function('the_content') }}
+                {{ function('the_content') }}
+            </section>
         </div>
     </main>
 {% endblock %}
