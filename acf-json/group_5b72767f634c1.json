@@ -1,0 +1,345 @@
+{
+    "key": "group_5b72767f634c1",
+    "title": "Banners",
+    "fields": [
+        {
+            "key": "field_5b76a28b98e23",
+            "label": "For Mobile?",
+            "name": "mobile",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b72960be29dd",
+                        "operator": "==",
+                        "value": "left-skin"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b72960be29dd",
+                        "operator": "==",
+                        "value": "right-skin"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b77d957f9fe7",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b72959ae29dc",
+            "label": "Code Snippet",
+            "name": "banner_code_snippet",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b76a28b98e23",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5b76a2237c219",
+            "label": "Mobile Code Snippet",
+            "name": "banner_mobile_code_snippet",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b76a28b98e23",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5b768a8f63f00",
+            "label": "Start Date",
+            "name": "banner_start_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_5b768a9e63f01",
+            "label": "End Date",
+            "name": "banner_end_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_5b72960be29dd",
+            "label": "Position",
+            "name": "banner_position",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "header-skin": "Header Skin",
+                "left-skin": "Left Skin",
+                "right-skin": "Right Skin",
+                "top-leaderboard": "Top Leaderboard",
+                "bottom-leaderboard": "Bottom Leaderboard"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5b77d957f9fe7",
+            "label": "Use as skin?",
+            "name": "use_as_skin",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b72960be29dd",
+                        "operator": "==",
+                        "value": "header-skin"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b72960be29dd",
+                        "operator": "==",
+                        "value": "left-skin"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b72960be29dd",
+                        "operator": "==",
+                        "value": "right-skin"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b77db2e17727",
+            "label": "Body Background Color",
+            "name": "body_background_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b77d957f9fe7",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_5b72960be29dd",
+                        "operator": "==",
+                        "value": "header-skin"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5b729a73910fc",
+            "label": "Exclude pages\/sections",
+            "name": "banner_placement",
+            "type": "checkbox",
+            "instructions": "This ad will NOT appear on the selected section\/s of the site:",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b77d957f9fe7",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33.3333",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "stars": "Stars",
+                "videos": "Videos",
+                "portfolio": "Portfolio",
+                "packages": "Packages",
+                "pages": "Pages",
+                "categories": "Categories"
+            },
+            "allow_custom": 0,
+            "save_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 1,
+            "return_format": "value"
+        },
+        {
+            "key": "field_5b729bc2183e3",
+            "label": "Pages",
+            "name": "banner_pages",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b77d957f9fe7",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33.3333",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5b729d15cb151",
+            "label": "Categories",
+            "name": "banner_categories",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b77d957f9fe7",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33.3333",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "checkbox",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "banner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1534583678
+}

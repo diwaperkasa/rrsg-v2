@@ -1,0 +1,50 @@
+{
+    "key": "group_5f9bced3a3876",
+    "title": "Republished \/\/ Options",
+    "fields": [
+        {
+            "key": "field_5f9bcedce9957",
+            "label": "Republished Article?",
+            "name": "republished_article_robbreport_sg",
+            "type": "true_false",
+            "instructions": "Custom Dimension Republished Article",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "features"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1604046721
+}
