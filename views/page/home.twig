@@ -68,6 +68,7 @@
 					</div>
 					<div class="mb-2">
 						{% for article in articles.posts %}
+							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 							{% if (loop.index == 1) %}
 								<div class="card rounded-0 border-0">
 									<div class="img-hover-zoom">
@@ -78,7 +79,7 @@
 										<!-- <p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p> -->
 										<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 										-
-										<span>Alvin Wong</span>
+										<span>{{ term_list[0].name }}</span>
 									</div>
 								</div>
 							{% endif %}
@@ -87,6 +88,7 @@
 							<div class="col-md-7">
 								<div class="row">
 									{% for article in articles.posts %}
+										{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 										{% if (loop.index > 1) %}
 											<div class="col-6 col-md-12">
 												<div class="card rounded-0 border-0">
@@ -98,7 +100,7 @@
 														<div>
 															<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 															-
-															<span>Carol Besler</span>
+															<span>{{ term_list[0].name }}</span>
 														</div>
 													</div>
 												</div>
@@ -127,6 +129,7 @@
 					</div>
 					<div class="mb-2">
 						{% for article in articles.posts %}
+							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 							{% if (loop.index == 1) %}
 								<div class="card rounded-0 border-0">
 									<div class="img-hover-zoom">
@@ -137,13 +140,14 @@
 										<!-- <p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p> -->
 										<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 										-
-										<span>Alvin Wong</span>
+										<span>{{ term_list[0].name }}</span>
 									</div>
 								</div>
 							{% endif %}
 						{% endfor %}
 						<div class="row">
 							{% for article in articles.posts %}
+								{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 								{% if (loop.index > 1) %}
 									<div class="col-6">
 										<div class="card rounded-0 border-0">
@@ -155,7 +159,7 @@
 												<div>
 													<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 													-
-													<span>Carol Besler</span>
+													<span>{{ term_list[0].name }}</span>
 												</div>
 											</div>
 										</div>
@@ -180,6 +184,7 @@
 					</div>
 					<div class="mb-2">
 						{% for article in articles.posts %}
+							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 							{% if (loop.index == 1) %}
 								<div class="card rounded-0 border-0">
 									<div class="img-hover-zoom">
@@ -190,13 +195,14 @@
 										<!-- <p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p> -->
 										<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 										-
-										<span>Alvin Wong</span>
+										<span>{{ term_list[0].name }}</span>
 									</div>
 								</div>
 							{% endif %}
 						{% endfor %}
 						<div class="row">
 							{% for article in articles.posts %}
+								{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 								{% if (loop.index > 1) %}
 									<div class="col-6">
 										<div class="card rounded-0 border-0">
@@ -208,7 +214,7 @@
 												<div>
 													<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 													-
-													<span>Carol Besler</span>
+													<span>{{ term_list[0].name }}</span>
 												</div>
 											</div>
 										</div>

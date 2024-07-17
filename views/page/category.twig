@@ -50,6 +50,7 @@
 					<div class="col-md-8">
 						<div class="my-4">
 							{% for article in articles.posts %}
+								{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 								{% if (loop.index == 1) %}
 									<div class="card rounded-0 border-0">
 										<div class="img-hover-zoom">
@@ -67,6 +68,7 @@
 							{% endfor %}
 							<div class="row post-listing">
 								{% for article in articles.posts %}
+									{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 									{% if (loop.index > 1) %}
 										<div class="col-6">
 											<div class="card rounded-0 border-0">
@@ -81,7 +83,7 @@
 													<div>
 														<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 														-
-														<span>Carol Besler</span>
+														<span>{{ term_list[0].name }}</span>
 													</div>
 												</div>
 											</div>
@@ -113,6 +115,7 @@
 					{% set articles = function('get_most_popular_article') %}
 					<div class="owl-carousel latest-carousel owl-theme">
 						{% for article in articles.posts %}
+							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 							<div class="item">
 								<div class="card rounded-0 border-0">
 									<div class="img-hover-zoom">
@@ -126,7 +129,7 @@
 										<div>
 											<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
 											-
-											<span>Carol Besler</span>
+											<span>{{ term_list[0].name }}</span>
 										</div>
 									</div>
 								</div>
