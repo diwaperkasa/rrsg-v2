@@ -55,7 +55,7 @@
 							</button>
 						</div>
 						<div class="search-input">
-							<input name="s" type="search" class="search-bar" placeholder="Search..." required/>
+							<input name="s" type="search" class="search-bar" placeholder="Search..." value="{{ function('get_search_query') }}" required/>
 						</div>
 					</div>
 				</form>
@@ -85,13 +85,13 @@
 	<div class="container nav-scroller py-1 mb-2">
 		<nav class="nav justify-content-between align-items-center">
 			<div>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/lifestyle">Lifestyle</a>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/watches-jewellery">Watches & Jewellery</a>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/gear">Gear</a>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/style">Style</a>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/art-design">Art & Design</a>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/investment">Investment</a>
-				<a class="p-2 link-secondary text-uppercase fs-5" href="/robb-spotlight">Robb Spotlight</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/lifestyle">Lifestyle</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/watches-jewellery">Watches & Jewellery</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/gear">Gear</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/style">Style</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/art-design">Art & Design</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/investment">Investment</a>
+				<a class="p-2 link-secondary text-uppercase fs-5 mx-2" href="/robb-spotlight">Robb Spotlight</a>
 			</div>
 			<form method="GET" action="/">
 				<div class="search-container" style="float:right">
@@ -103,7 +103,7 @@
 						</button>
 					</div>
 					<div class="search-input">
-						<input name="s" type="search" class="search-bar" placeholder="Search..." required/>
+						<input name="s" type="search" class="search-bar" placeholder="Search..." value="{{ function('get_search_query') }}" required/>
 					</div>
 				</div>
 			</form>

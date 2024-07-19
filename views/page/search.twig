@@ -6,6 +6,28 @@
 
 {% block content %}
     <main>
-        search
+		<section id="section-search">
+			<div class="container">
+                <div class="my-5">
+                    <div class="text-center">
+                        <h3>SEARCH RESULT FOR: <span>{{ function("get_search_query") }}</span></h3>
+                    </div>
+                </div>
+                <div class="row article-list">
+                    <dic class="row article-list">
+                        {% if data.articles is not empty %}
+                            {% for article in data.articles %}
+                                <div class="col-md-4">
+                                    {{ include('page/component/card.twig', {'article': article}) }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-md-4">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 {% endblock %}
