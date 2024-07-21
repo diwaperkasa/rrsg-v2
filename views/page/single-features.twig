@@ -90,7 +90,33 @@
 					<div class="col-md-8">
 						<div class="my-4">
 							<article id="post-{{ function('the_ID') }}" {{ function('post_class') }}>
-								{{ function("the_content") }}
+								{% if function('have_rows', 'layout', data.post.ID) %}
+									{% for i in 0 .. function('count', function('get_field', 'layout')) %}
+										{% do function('the_row') %}
+										{% if function('get_row_layout') == 'full_width_image' %}
+											{% set image = function('get_sub_field', 'image') %}
+											{% set size = 'full' %}
+											<figure class="feature-image">
+												{{ function('wp_get_attachment_image', image, size) }}
+											</figure>
+										{% elseif function('get_row_layout') == 'mixed_content' %}
+											{% if function('the_sub_field', 'content') is not empty %}
+												{{ function('the_sub_field', 'content') }}
+											{% else %}
+												{{ function('the_content') }}
+											{% endif %}
+										{% elseif function('get_row_layout') == 'full_width_carousel' %}
+											{% set carouseImages = function('get_sub_field', 'carousel_images') %}
+											{% for image in carouseImages %}
+												<figure {{ loop.index }} class='carousel-cell'>
+													<div>
+														<img src="{{ image.image }}" alt="image.image">
+													</div>
+												</figure>
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
+								{% endif %}
 							</article>
 						</div>
 					</div>

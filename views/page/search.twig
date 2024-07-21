@@ -15,8 +15,8 @@
                 </div>
                 <div class="row article-list">
                     <dic class="row article-list">
-                        {% if data.articles is not empty %}
-                            {% for article in data.articles %}
+                        {% if data.posts is not empty %}
+                            {% for article in data.posts %}
                                 <div class="col-md-4">
                                     {{ include('page/component/card.twig', {'article': article}) }}
                                 </div>
