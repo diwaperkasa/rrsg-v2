@@ -36,7 +36,7 @@
 		<section id="section-newsfeed">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<!-- <div class="col-md-4">
 						<nav class="nav side-nav flex-column my-4 d-none d-md-block">
 							<a class="nav-link {{ currentUrl == 'lifestyle' ? 'active' : null }}" href="/lifestyle">Lifestyle</a>
 							<a class="nav-link {{ currentUrl == 'watches-jewellery' ? 'active' : null }}" aria-current="page" href="/watches-jewellery">Watches & Jewellery</a>
@@ -46,7 +46,7 @@
 							<a class="nav-link {{ currentUrl == 'investment' ? 'active' : null }}" href="/investment">Investment</a>
 							<a class="nav-link {{ currentUrl == 'robb-spotlight' ? 'active' : null }}" href="/robb-spotlight">Robb Spotlight</a>
 						</nav>
-					</div>
+					</div> -->
 					<div class="col-md-8">
 						<div class="my-4">
 							{% for article in articles.posts %}
@@ -71,22 +71,7 @@
 									{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 									{% if (loop.index > 1) %}
 										<div class="col-6">
-											<div class="card rounded-0 border-0">
-												<div class="img-hover-zoom">
-													{{ function('get_the_post_thumbnail', article) }}
-												</div>
-												<div class="card-body text-center">
-													<div>
-														{{ function('primary_category', article) }}
-													</div>
-													<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
-													<div>
-														<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
-														-
-														<span>{{ term_list[0].name }}</span>
-													</div>
-												</div>
-											</div>
+											{{ include('page/component/card.twig', {'article': article}) }}
 										</div>
 									{% endif %}
 								{% endfor %}
@@ -96,6 +81,15 @@
 							<div class="btn is-underline load-more">
 								<span>View more stories</span>
 							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div id='div-gpt-ad-3035191-5' class="ad leaderboard leaderboard-vertical">
+							<script>
+								googletag.cmd.push(function() {
+									googletag.display('div-gpt-ad-3035191-5');
+								});
+							</script>
 						</div>
 					</div>
 				</div>
@@ -117,22 +111,7 @@
 						{% for article in articles.posts %}
 							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
 							<div class="item">
-								<div class="card rounded-0 border-0">
-									<div class="img-hover-zoom">
-										{{ function('get_the_post_thumbnail', article) }}
-									</div>
-									<div class="card-body text-center">
-										<div>
-											{{ function('primary_category', article) }}
-										</div>
-										<a href="{{ function('the_permalink', article) }}" class="h3 mb-2"><h5>{{ function('short_title', article) }}</h5></a>
-										<div>
-											<span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
-											-
-											<span>{{ term_list[0].name }}</span>
-										</div>
-									</div>
-								</div>
+								{{ include('page/component/card.twig', {'article': article}) }}
 							</div>
 						{% endfor %}
 					</div>

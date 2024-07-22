@@ -1,31 +1,60 @@
 {% extends "layout/main.twig" %}
 
 {% block css_script %}
-    
+    <style>
+        .pagination {
+            justify-content: center;
+        }
+
+        .pagination .page-numbers {
+            padding: 0.5rem;
+            color: #dc3545;
+            border: none;
+            font-family: "Tenor Sans", sans-serif;
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        .pagination .current {
+            color: #ffff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
     <main>
 		<section id="section-search">
 			<div class="container">
-                <div class="my-5">
-                    <div class="text-center">
-                        <h3>SEARCH RESULT FOR: <span>{{ function("get_search_query") }}</span></h3>
-                    </div>
-                </div>
-                <div class="row article-list">
-                    <dic class="row article-list">
-                        {% if data.posts is not empty %}
-                            {% for article in data.posts %}
-                                <div class="col-md-4">
-                                    {{ include('page/component/card.twig', {'article': article}) }}
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="col-md-4">
+                <div class="my-5 mx-5">
+                    <form class="row g-3 mb-4">
+                        <div class="col-md-10">
+                            <input name="s" value="{{ function('get_search_query') }}" type="text" class="form-control form-control-lg rounded-0" placeholder="Search" aria-label="Search">
+                        </div>
+                        <div class="col-md-2 ">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-lg btn-dark rounded-0 ">Search</button>
                             </div>
-                        {% endif %}
+                        </div>
+                    </form>
+                </div>
+                {% if data.posts is not empty %}
+                    <div class="row article-list">
+                        {% for article in data.posts %}
+                            <div class="col-md-4">
+                                {{ include('page/component/card.twig', {'article': article}) }}
+                            </div>
+                        {% endfor %}
                     </div>
+                    <div class="my-5 text-center">
+                        {{ function('get_the_posts_pagination', {mid_size: 2, prev_text: 'Previous', next_text: 'Next'}) }}
+                    </div>
+                {% else %}
+                    <div class="text-center mb-5">
+                        <span class="h4">No results found...</span>
+                    </div>
+                {% endif %}
                 </div>
             </div>
         </section>

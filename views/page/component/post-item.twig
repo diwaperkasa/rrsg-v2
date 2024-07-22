@@ -1,3 +1,5 @@
 {% for article in data.articles.posts %}
-    {{ include('page/component/card.twig', {'article': article}) }}
+    <div class="col-md-6">
+        {{ include('page/component/card.twig', {'article': article}) }}
+    </div>
 {% endfor %}
