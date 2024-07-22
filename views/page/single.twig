@@ -141,16 +141,7 @@
                     <div class="owl-carousel latest-carousel owl-theme">
                         {% for article in popular_articles.posts %}
                             <div class="item">
-                                <div class="card rounded-0 border-0">
-                                    <div class="img-hover-zoom">
-                                        {{ function('get_the_post_thumbnail', article) }}
-                                    </div>
-                                    <div class="card-body text-center">
-                                        {{ function('primary_category', article) }}
-                                        <br>
-                                        <a href="{{ function('the_permalink', article) }}"><h5>{{ function('short_title', article) }}</h5></a>
-                                    </div>
-                                </div>
+                                {{ include('page/component/card.twig', {'article': article}) }}
                             </div>
                         {% endfor %}
                     </div>
