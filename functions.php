@@ -6,6 +6,29 @@ use Carbon_Fields\Field;
 add_action('after_setup_theme', 'crb_load');
 add_action('carbon_fields_register_fields', 'add_custom_field_action');
 
+//Add Style
+function theme_enqueue_styles()
+{
+	wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.min.css');
+	wp_enqueue_style('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.carousel.min.css');
+	wp_enqueue_style('owl-carousel-theme', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.theme.default.css', ['owl-carousel']);
+	wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css', [], '2.0');
+}
+
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+//Add Script
+function theme_enqueue_script()
+{
+	wp_enqueue_script('jquery-rrsg', get_stylesheet_directory_uri() . '/assets/vendor/jquery/jquery-3.2.1.min.js', [], false, true);
+	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.bundle.min.js', [], false, true);
+	wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/owl.carousel.min.js', [], false, true);
+	wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js', [], false, true);
+	
+}
+
+add_action('wp_enqueue_scripts', 'theme_enqueue_script');
+
 function crb_load()
 {
     require_once(__DIR__ . '/Lib/vendor/autoload.php');

@@ -223,8 +223,13 @@ a:hover {
 }
 
 .wp-caption {
-  margin-bottom: 2em;
   max-width: 100%;
+  margin-bottom: 2em;
+}
+
+.wp-caption img {
+  max-width: 100%;
+  height: auto;
 }
 
 .wp-caption .wp-caption-text {

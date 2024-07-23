@@ -1,0 +1,50 @@
+{% extends "layout/main.twig" %}
+
+{% block css_script %}
+    <style>
+        .pagination {
+            justify-content: center;
+        }
+
+        .pagination .page-numbers {
+            padding: 0.5rem;
+            color: #dc3545;
+            border: none;
+            font-family: "Tenor Sans", sans-serif;
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        .pagination .current {
+            color: #ffff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main>
+		<section id="section-search">
+			<div class="container">
+                {% if data.posts is not empty %}
+                    <div class="row article-list">
+                        {% for article in data.posts %}
+                            <div class="col-md-4">
+                                {{ include('page/component/card.twig', {'article': article}) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="my-5 text-center">
+                        {{ function('get_the_posts_pagination', {mid_size: 2, prev_text: 'Previous', next_text: 'Next'}) }}
+                    </div>
+                {% else %}
+                    <div class="text-center mb-5">
+                        <span class="h4">No results found...</span>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
