@@ -2,7 +2,7 @@
 <article id="post-{{ article.ID }}" {{ function('post_class', '', article.ID) }}>
     <a href="{{ function('the_permalink', article) }}">
         <div class="card rounded-0 border-0">
-            <div class="img-hover-zoom">
+            <div class="img-hover-zoom img-thumb">
                 {{ function('get_the_post_thumbnail', article) }}
             </div>
             <div class="card-body text-center">
