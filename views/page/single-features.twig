@@ -21,8 +21,17 @@
 			font-size: 1rem;
         }
 
-		#section-newscontent .paragraph iframe {
+		#section-newscontent .paragraph p:has(iframe) {
+			aspect-ratio: 16 / 9;
+			margin-bottom: 2rem;
+			padding: 0px;
+			overflow: hidden;
+        }
+
+		#section-newscontent .paragraph p iframe {
 			max-width: 100%;
+			width: 100%;
+			height: 100%;
         }
 
         #section-MostPopular img {
@@ -45,6 +54,14 @@
 		.carousel:after {
 			content: 'flickity';
 			display: none; /* hide :after */
+		}
+
+		.flickity-page-dots {
+			display: none;
+		}
+
+		.flickity-enabled figcaption {
+			font-style: italic;
 		}
 	</style>
 {% endblock %}
