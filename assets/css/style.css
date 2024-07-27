@@ -259,3 +259,26 @@ a:hover {
   position: sticky;
   top: 10rem;
 }
+
+.nav-scroller nav a, nav.nav-main a{
+  position: relative;
+}
+.nav-scroller nav a::before, nav.nav-main a::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2px;
+  background: black;
+  transition: all 0.5s ease;
+  transform: scale(0);
+}
+.nav-scroller nav a:hover:before, nav.nav-main a:hover:before {
+  transform: scale(1);
+}
+
+nav.nav-main .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
