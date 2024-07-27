@@ -103,7 +103,9 @@
 						</button>
 					</div>
 					<div class="search-input">
-						<input name="s" type="search" class="search-bar" placeholder="Search..." value="{{ function('get_search_query') }}" required/>
+						<form action="/" method="GET">
+							<input value="{{ function('get_search_query') }}" name="s" type="search" class="search-bar" placeholder="Search...">
+						</form>
 					</div>
 				</div>
 			</form>
@@ -130,7 +132,9 @@
             </svg>
           </div>
           <div class="search-input">
-            <input type="search" class="search-bar" placeholder="Search...">
+			<form action="/" method="GET">
+				<input value="{{ function('get_search_query') }}" name="s" type="search" class="search-bar" placeholder="Search...">
+			</form>
           </div>
         </div>
         <div class="collapse navbar-collapse">
@@ -173,7 +177,9 @@
             </svg>
           </div>
           <div class="search-input">
-            <input type="search" class="search-bar" placeholder="Search...">
+			<form action="/" method="GET">
+				<input value="{{ function('get_search_query') }}" name="s" type="search" class="search-bar" placeholder="Search...">
+			</form>
           </div>
         </div>
       </nav>
@@ -230,7 +236,9 @@
             </svg>
           </div>
           <div class="search-input">
-            <input type="search" class="search-bar" placeholder="Search...">
+			<form action="/" method="GET">
+				<input value="{{ function('get_search_query') }}" name="s" type="search" class="search-bar" placeholder="Search...">
+			</form>
           </div>
         </div>
       </div>
