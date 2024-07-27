@@ -1,0 +1,18 @@
+{% extends "layout/main.twig" %}
+
+{% block css_script %}
+    <style>
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+	<main>
+		<section id="section-newsletters">
+			<div class="container">
+				{{ function('do_shortcode', '[pms-register]') }}
+			</div>
+		</section>
+	</main>
+{% endblock %}
