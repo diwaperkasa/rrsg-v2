@@ -154,12 +154,7 @@
 							<p>We close the year with our much anticipated Ultimate Gift Guide. Pamper yourself and your loved ones, and celebrate a well-lived year with a specially curated list of the most extraordinary accoutrements and experiences.</p>
 							<p class="text-muted">Subscribe and receive a copy of Robb Report Singapore at your doorstep each month.</p>
 							<div class="mb-3">
-								<select class="form-control rounded-0" aria-label="Default select example">
-									<option value="1">Single Issue</option>
-									<option value="2">Annual Print Subscription (Local)</option>
-									<option value="3">Annual Print Subscription (International)</option>
-									<option value="4">Digital Subscription</option>
-								</select>
+								{{ function('do_shortcode', '[subscribe_type]') }}
 							</div>
 						</div>
 						<div class="col-md-6 text-md-end">
@@ -207,6 +202,13 @@
 			dots: false,
 			center: true,
 			items:2,
-		})
+		});
+
+		$('.js-cm-form').submit(function (e) {
+			const subscribeType = $('#subscribe-type option:checked').val();
+			const url = $('#subscribe-type option:checked').data('url');
+
+			window.open(url);
+		});
 	</script>
 {% endblock %}
