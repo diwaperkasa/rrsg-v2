@@ -74,7 +74,7 @@ add_shortcode("divider", "divider");
 function subscribe_type($atts, $content = null)
 {
     return "
-        <select id='subscribe-type' class='form-control rounded-0' aria-label='Default select example'>
+        <select id='subscribe-type' class='form-control rounded-0'>
             <option value='single' data-url='https://robb-report-singapore.myshopify.com/products/i-robb-report-singapore-i-march-2021-issue'>Single Issue</option>
             <option value='local' data-url='https://robb-report-singapore.myshopify.com/products/i-robb-report-singapore-i-annual-print-subscription-12-issues-with-local-shipping'>Annual Print Subscription (Local)</option>
             <option value='international' data-url='https://robb-report-singapore.myshopify.com/products/i-robb-report-singapore-i-annual-print-subscription-12-issues-with-overseas-shipping'>Annual Print Subscription (International)</option>

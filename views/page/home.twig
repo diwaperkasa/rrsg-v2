@@ -193,7 +193,17 @@
 			const subscribeType = $('#subscribe-type option:checked').val();
 			const url = $('#subscribe-type option:checked').data('url');
 
-			window.open(url);
+			if (url) {
+				window.open(url);
+			}
+		});
+
+		$('#subscribe-type').change(function() {
+			const url = $('#subscribe-type option:checked').data('url');
+
+			if (url) {
+				window.open(url);
+			}
 		});
 	</script>
 {% endblock %}
