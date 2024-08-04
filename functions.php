@@ -11,18 +11,18 @@ add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 function my_acf_json_save_point($path)
 {
 
-	$path = get_stylesheet_directory() . '/acf-json';
+    $path = get_stylesheet_directory() . '/acf-json';
 
-	return $path;
+    return $path;
 }
 
 //Add Style
 function theme_enqueue_styles()
 {
-	wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.min.css');
-	wp_enqueue_style('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.carousel.min.css');
-	wp_enqueue_style('owl-carousel-theme', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.theme.default.css', ['owl-carousel']);
-	wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=2.4');
+    wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.min.css');
+    wp_enqueue_style('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.carousel.min.css');
+    wp_enqueue_style('owl-carousel-theme', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.theme.default.css', ['owl-carousel']);
+    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=2.4');
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
@@ -30,11 +30,10 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 //Add Script
 function theme_enqueue_script()
 {
-	wp_enqueue_script('jquery-rrsg', get_stylesheet_directory_uri() . '/assets/vendor/jquery/jquery-3.2.1.min.js', [], false, true);
-	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.bundle.min.js', [], false, true);
-	wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/owl.carousel.min.js', [], false, true);
-	wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=1.o', [], false, true);
-	
+    wp_enqueue_script('jquery-rrsg', get_stylesheet_directory_uri() . '/assets/vendor/jquery/jquery-3.2.1.min.js', [], false, true);
+    wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.bundle.min.js', [], false, true);
+    wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/owl.carousel.min.js', [], false, true);
+    wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=1.o', [], false, true);
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_script');
@@ -636,3 +635,65 @@ function theme_setup()
 }
 
 add_action('after_setup_theme', 'theme_setup');
+
+function get_desktop_menu()
+{
+    $menu_name = 'primary-menu';
+    $menu_list = '<ul id="menu" class="navbar-nav">' . "\n";
+
+    if ($menu_items = wp_get_nav_menu_items($menu_name)) {
+        $count = 0;
+        $submenu = false;
+        $parent_id = 0;
+        $previous_item_has_submenu = false;
+
+        foreach ((array) $menu_items as $key => $menu_item) {
+            $title = $menu_item->title;
+            $url = $menu_item->url;
+            // check if it's a top-level item
+            if ($menu_item->menu_item_parent == 0) {
+                $parent_id = $menu_item->ID;
+                // write the item but DON'T close the A or LI until we know if it has children!
+                $menu_list .= "\t" . '<li class="nav-item dropdown"><a class="p-2 link-secondary text-uppercase dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false" href="' . $url . '">' . $title;
+            }
+            // if this item has a (nonzero) parent ID, it's a second-level (child) item
+            else {
+                if (!$submenu) { // first item
+                    // add the dropdown arrow to the parent
+                    $menu_list .= '<span class="arrow-down"></span></a>' . "\n";
+                    // start the child list
+                    $submenu = true;
+                    $previous_item_has_submenu = true;
+                    $menu_list .= "\t\t" . '<ul class="dropdown-menu">' . "\n";
+                }
+
+                $menu_list .= "\t\t\t" . '<li>';
+                $menu_list .= '<a class="dropdown-item text-uppercase" href="' . $url . '" class="title">' . $title . '</a>';
+                $menu_list .= '</li>' . "\n";
+                // if it's the last child, close the submenu code
+                if (isset($menu_items[$count + 1]) && $menu_items[$count + 1]->menu_item_parent != $parent_id && $submenu) {
+                    $menu_list .= "\t\t" . '</ul></li>' . "\n";
+                    $submenu = false;
+                }
+            }
+            // close the parent (top-level) item
+            if (empty($menu_items[$count + 1]) || $menu_items[$count + 1]->menu_item_parent != $parent_id) {
+                if ($previous_item_has_submenu) {
+                    // the a link and list item were already closed
+                    $previous_item_has_submenu = false; //reset
+                } else {
+                    // close a link and list item
+                    $menu_list .= "\t" . '</a></li>' . "\n";
+                }
+            }
+
+            $count++;
+        }
+    } else {
+        $menu_list .= '<!-- no list defined -->';
+    }
+
+    $menu_list .= "\t" . '</ul>' . "\n";
+
+    return $menu_list;
+}
