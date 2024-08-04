@@ -148,28 +148,13 @@
 		<section id="section-subscribe" class="mt-4">
 			<div class="container-fluid p-0">
 				<div class="container">
+					{% set footerContent = function('get_field', 'footer_content') %}
 					<div class="row">
-						<div class="col-md-6">
-							<h4 class="mb-4">December 2023</h4>
-							<p>We close the year with our much anticipated Ultimate Gift Guide. Pamper yourself and your loved ones, and celebrate a well-lived year with a specially curated list of the most extraordinary accoutrements and experiences.</p>
-							<p class="text-muted">Subscribe and receive a copy of Robb Report Singapore at your doorstep each month.</p>
-							<div class="mb-3">
-								{{ function('do_shortcode', '[subscribe_type]') }}
+						{% for content in footerContent %}
+							<div class="col-md-6">
+								{{ function('do_shortcode', content.footer_content) }}
 							</div>
-						</div>
-						<div class="col-md-6 text-md-end">
-							<h4 class="mb-4">Terms & Conditions</h4>
-							<p>Standard conditions on all purchase or subscriptions.
-								                Subscriptions or sold goods are 
-								                non-refundable from the time of payment.
-								                We are not liable for postal and other delays 
-								                in delivery.
-								                Special offers are subject to specific terms and conditions if applicable.
-								                For cheque payments, overseas subscriptions or other queries, please email:
-								                subscription@imv.com.sg</p>
-							<p>For a full list of our stockists,
-								<a href="/distribution" class="text-decoration-underline">click here</a>.</p>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 				<div class="bg-secondary bg-opacity-25 p-md-5 py-5 px-md-5">
