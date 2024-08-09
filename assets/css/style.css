@@ -283,12 +283,12 @@ nav.nav-main .dropdown:hover .dropdown-menu {
   margin-top: 0;
 }
 
-.dropdown-toggle.collapsed::after {
+.mobile-menu .dropdown-toggle.collapsed::after {
   border-top: .3em solid;
   border-bottom: 0;
 }
 
-.dropdown-toggle:not(.collapsed)::after {
+.mobile-menu .dropdown-toggle:not(.collapsed)::after {
   border-top: 0;
   border-bottom: .3em solid;
 }
