@@ -22,7 +22,7 @@ function theme_enqueue_styles()
     wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.min.css');
     wp_enqueue_style('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.carousel.min.css');
     wp_enqueue_style('owl-carousel-theme', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.theme.default.css', ['owl-carousel']);
-    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=2.4');
+    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=2.5');
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
@@ -712,25 +712,34 @@ function get_mobile_menu()
         foreach ((array) $menu_items as $key => $menu_item) {
             $title = $menu_item->title;
             $url = $menu_item->url;
+            $slug = $menu_item->slug;
             // check if it's a top-level item
             if ($menu_item->menu_item_parent == 0) {
                 $parent_id = $menu_item->ID;
                 // write the item but DON'T close the A or LI until we know if it has children!
-                $menu_list .= "\t" . '<li class="nav-item"><a class="nav-link  fs-1" href="' . $url . '">' . $title;
+                $menu_list .= "\t" . '
+                    <li class="nav-item d-grid">
+                        <div class="btn-group">
+                            <a type="button" href="' . $url . '" class="btn fs-1 btn-light text-start bg-transparent border-0">' . $title . '</a>
+                            <a type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split text-end bg-transparent border-0 collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#submenu-' . $parent_id . '" aria-expanded="true" aria-controls="submenu-' . $parent_id . '">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </a>
+                ';
             }
             // if this item has a (nonzero) parent ID, it's a second-level (child) item
             else {
                 if (!$submenu) { // first item
                     // add the dropdown arrow to the parent
-                    $menu_list .= '</a>' . "\n";
+                    $menu_list .= '</div>' . "\n";
                     // start the child list
                     $submenu = true;
                     $previous_item_has_submenu = true;
-                    $menu_list .= "\t\t" . '<ul class="ms-3 nav flex-column">' . "\n";
+                    $menu_list .= "\t\t" . '<ul class="ms-3 nav flex-column collapse h-100" aria-labelledby="submenu-' . $parent_id . '" id="submenu-' . $parent_id . '">' . "\n";
                 }
 
                 $menu_list .= "\t\t\t" . '<li class="nav-item">';
-                $menu_list .= '<a class="nav-link  fs-2" href="' . $url . '">' . $title . '</a>';
+                $menu_list .= '<a class="nav-link fs-2" href="' . $url . '">' . $title . '</a>';
                 $menu_list .= '</li>' . "\n";
                 // if it's the last child, close the submenu code
                 if (isset($menu_items[$count + 1]) && $menu_items[$count + 1]->menu_item_parent != $parent_id && $submenu) {
