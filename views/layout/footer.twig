@@ -17,27 +17,11 @@
 	</div>
 	<div class="row">
 		<ul class="nav justify-content-center">
-			<li class="nav-item">
-				<a href="/about-us" class="nav-link text-black px-2">About</a>
-			</li>
-			<li class="nav-item">
-				<a href="/contact-us/" class="nav-link text-black px-2">Contact</a>
-			</li>
-			<li class="nav-item">
-				<a href="/advertise/" class="nav-link text-black px-2">Advertise</a>
-			</li>
-			<li class="nav-item">
-				<a target="_blank" href="/wp-content/uploads/2024/02/MEDIAKIT_RRSG_2024.pdf" class="nav-link text-black px-2">Media Kit</a>
-			</li>
-			<li class="nav-item">
-				<a href="/distribution" class="nav-link text-black px-2">Distribution</a>
-			</li>
-			<li class="nav-item">
-				<a href="/privacy-policy/" class="nav-link text-black px-2">Privacy Policy</a>
-			</li>
-			<li class="nav-item">
-				<a href="/partnerships-subscriptions" class="nav-link text-black px-2">Partnerships</a>
-			</li>
+            {% for menu in function('get_footer_menu') %}
+				<li class="nav-item">
+					<a href="{{ menu.url }}" class="nav-link text-black px-2">{{ menu.title }}</a>
+				</li>
+			{% endfor %}
 		</ul>
 	</div>
 </footer>

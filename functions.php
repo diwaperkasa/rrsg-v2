@@ -654,7 +654,7 @@ function get_desktop_menu()
             if ($menu_item->menu_item_parent == 0) {
                 $parent_id = $menu_item->ID;
                 // write the item but DON'T close the A or LI until we know if it has children!
-                $menu_list .= "\t" . '<li class="nav-item dropdown"><a class="p-2 link-secondary text-uppercase dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false" href="' . $url . '">' . $title;
+                $menu_list .= "\t" . '<li class="nav-item dropdown"><a class="p-2 link-secondary text-uppercase dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false" href="' . ($title === "Robb Spotlight" ? "javascript:void(0);" : $url) . '">' . $title;
             }
             // if this item has a (nonzero) parent ID, it's a second-level (child) item
             else {
@@ -712,7 +712,6 @@ function get_mobile_menu()
         foreach ((array) $menu_items as $key => $menu_item) {
             $title = $menu_item->title;
             $url = $menu_item->url;
-            $slug = $menu_item->slug;
             // check if it's a top-level item
             if ($menu_item->menu_item_parent == 0) {
                 $parent_id = $menu_item->ID;
@@ -720,8 +719,8 @@ function get_mobile_menu()
                 $menu_list .= "\t" . '
                     <li class="nav-item d-grid">
                         <div class="btn-group">
-                            <a type="button" href="' . $url . '" class="btn fs-1 btn-light text-start bg-transparent border-0">' . $title . '</a>
-                            <a type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split text-end bg-transparent border-0 collapsed"
+                            <a type="button" href="' . ($title === "Robb Spotlight" ? "javascript:void(0);" : $url) . '" class="btn fs-1 btn-light text-start bg-transparent border-0">' . $title . '</a>
+                            <a type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split text-end bg-transparent border-0"
                                 data-bs-toggle="collapse" data-bs-target="#submenu-' . $parent_id . '" aria-expanded="true" aria-controls="submenu-' . $parent_id . '">
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </a>
@@ -735,7 +734,7 @@ function get_mobile_menu()
                     // start the child list
                     $submenu = true;
                     $previous_item_has_submenu = true;
-                    $menu_list .= "\t\t" . '<ul class="ms-3 nav flex-column collapse h-100" aria-labelledby="submenu-' . $parent_id . '" id="submenu-' . $parent_id . '">' . "\n";
+                    $menu_list .= "\t\t" . '<ul class="ms-3 nav flex-column collapse show h-100" aria-labelledby="submenu-' . $parent_id . '" id="submenu-' . $parent_id . '">' . "\n";
                 }
 
                 $menu_list .= "\t\t\t" . '<li class="nav-item">';
@@ -767,4 +766,39 @@ function get_mobile_menu()
     $menu_list .= "\t" . '</ul>' . "\n";
 
     return $menu_list;
+}
+
+function get_top_menu()
+{
+    $menu_name = 'top-menu';
+    $menu_items = wp_get_nav_menu_items($menu_name);
+
+    return $menu_items ?: [];
+}
+
+function get_footer_menu()
+{
+    $menu_name = 'footer-menu';
+    $menu_items = wp_get_nav_menu_items($menu_name);
+
+    return $menu_items ?: [];
+}
+
+function get_slider_menu()
+{
+    $menu_name = 'primary-menu';
+    $menu_items = wp_get_nav_menu_items($menu_name) ?: [];
+    $result = [];
+
+    foreach ($menu_items as $menu_item) {
+        if ($menu_item->menu_item_parent == 0) {
+            if ($menu_item->title === "Robb Spotlight") {
+                $menu_item->url = "javascript:void(0);";
+            }
+            
+            $result[] = $menu_item;
+        }
+    }
+
+    return $result;
 }
