@@ -292,3 +292,7 @@ nav.nav-main .dropdown:hover .dropdown-menu {
   border-top: 0;
   border-bottom: .3em solid;
 }
+
+#desktop-menu .dropdown-toggle::after {
+  display: none;
+}

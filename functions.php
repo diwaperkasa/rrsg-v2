@@ -22,7 +22,7 @@ function theme_enqueue_styles()
     wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.min.css');
     wp_enqueue_style('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.carousel.min.css');
     wp_enqueue_style('owl-carousel-theme', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.theme.default.css', ['owl-carousel']);
-    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=2.6');
+    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=2.7');
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
@@ -639,7 +639,7 @@ add_action('after_setup_theme', 'theme_setup');
 function get_desktop_menu()
 {
     $menu_name = 'primary-menu';
-    $menu_list = '<ul id="menu" class="navbar-nav">' . "\n";
+    $menu_list = '<ul id="desktop-menu" class="navbar-nav">' . "\n";
 
     if ($menu_items = wp_get_nav_menu_items($menu_name)) {
         $count = 0;
@@ -720,7 +720,7 @@ function get_mobile_menu()
                     <li class="nav-item d-grid">
                         <div class="btn-group">
                             <a type="button" href="' . ($title === "Robb Spotlight" ? "javascript:void(0);" : $url) . '" class="btn fs-1 btn-light text-start bg-transparent border-0">' . $title . '</a>
-                            <a type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split text-end bg-transparent border-0"
+                            <a type="button" class="d-none btn btn-light dropdown-toggle dropdown-toggle-split text-end bg-transparent border-0"
                                 data-bs-toggle="collapse" data-bs-target="#submenu-' . $parent_id . '" aria-expanded="true" aria-controls="submenu-' . $parent_id . '">
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </a>
