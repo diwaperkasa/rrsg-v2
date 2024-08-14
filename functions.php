@@ -701,7 +701,7 @@ function get_desktop_menu()
 function get_mobile_menu()
 {
     $menu_name = 'primary-menu';
-    $menu_list = '<ul class="nav side-nav flex-column">' . "\n";
+    $menu_list = '<ul class="nav side-nav d-grid">' . "\n";
 
     if ($menu_items = wp_get_nav_menu_items($menu_name)) {
         $count = 0;
@@ -734,10 +734,10 @@ function get_mobile_menu()
                     // start the child list
                     $submenu = true;
                     $previous_item_has_submenu = true;
-                    $menu_list .= "\t\t" . '<ul class="ms-3 nav flex-column collapse show h-100" aria-labelledby="submenu-' . $parent_id . '" id="submenu-' . $parent_id . '">' . "\n";
+                    $menu_list .= "\t\t" . '<ul aria-labelledby="submenu-' . $parent_id . '" id="submenu-' . $parent_id . '">' . "\n";
                 }
 
-                $menu_list .= "\t\t\t" . '<li class="nav-item">';
+                $menu_list .= "\t\t\t" . '<li class="list-unstyled">';
                 $menu_list .= '<a class="nav-link fs-2" href="' . $url . '">' . $title . '</a>';
                 $menu_list .= '</li>' . "\n";
                 // if it's the last child, close the submenu code
