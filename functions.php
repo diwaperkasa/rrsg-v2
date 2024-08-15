@@ -33,7 +33,7 @@ function theme_enqueue_script()
     wp_enqueue_script('jquery-rrsg', get_stylesheet_directory_uri() . '/assets/vendor/jquery/jquery-3.2.1.min.js', [], false, true);
     wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.bundle.min.js', [], false, true);
     wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/owl.carousel.min.js', [], false, true);
-    wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=1.o', [], false, true);
+    wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=1.2', [], false, true);
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_script');
@@ -768,6 +768,72 @@ function get_mobile_menu()
     return $menu_list;
 }
 
+function get_slider_menu()
+{
+    $menu_name = 'primary-menu';
+    $menu_list = '';
+    $sub_menu_list = '';
+
+    if ($menu_items = wp_get_nav_menu_items($menu_name)) {
+        $count = 0;
+        $submenu = false;
+        $parent_id = 0;
+        $previous_item_has_submenu = false;
+        $menu_list = '<div class="slider-menu">' . "\n";
+
+        foreach ((array) $menu_items as $key => $menu_item) {
+            $title = $menu_item->title;
+            $url = $menu_item->url;
+            // check if it's a top-level item
+            if ($menu_item->menu_item_parent == 0) {
+                $parent_id = $menu_item->ID;
+                // write the item but DON'T close the A or LI until we know if it has children!
+                $menu_list .= "\t" . '
+                    <div class="btn-group">
+                        <a class="p-2 link-secondary text-uppercase fs-6" href="' . ($title === "Robb Spotlight" ? "javascript:void(0);" : $url) . '">' . $title . '</a>
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split bg-transparent border-0 text-dark" type="button" data-sub-menu-id="submenu-' . $parent_id . '">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                    </div>
+                ';
+            }
+            // if this item has a (nonzero) parent ID, it's a second-level (child) item
+            else {
+                if (!$submenu) {
+                    // first item
+                    // add the dropdown arrow to the parent
+                    // $menu_list .= '</div>' . "\n";
+                    // start the child list
+                    $submenu = true;
+                    $previous_item_has_submenu = true;
+                    $sub_menu_list .= "\t\t" . '
+                        <ul class="dropdown-menu" id="submenu-' . $parent_id . '">' . "\n";
+                }
+
+                $sub_menu_list .= "\t\t\t" . '<li>';
+                $sub_menu_list .= '<a class="dropdown-item text-uppercase" href="' . $url . '">' . $title . '</a>';
+                $sub_menu_list .= '</li>' . "\n";
+                // if it's the last child, close the submenu code
+                if (isset($menu_items[$count + 1]) && $menu_items[$count + 1]->menu_item_parent != $parent_id && $submenu) {
+                    $sub_menu_list .= "\t\t" . '</li></ul>' . "\n";
+                    $submenu = false;
+                }
+            }
+
+            $count++;
+        }
+
+        $menu_list .= "\t" . '</div>' . "\n";
+    } else {
+        $menu_list .= '<!-- no list defined -->';
+    }
+
+    return [
+        'menu' => $menu_list,
+        'sub_menu' => $sub_menu_list
+    ];
+}
+
 function get_top_menu()
 {
     $menu_name = 'top-menu';
@@ -782,23 +848,4 @@ function get_footer_menu()
     $menu_items = wp_get_nav_menu_items($menu_name);
 
     return $menu_items ?: [];
-}
-
-function get_slider_menu()
-{
-    $menu_name = 'primary-menu';
-    $menu_items = wp_get_nav_menu_items($menu_name) ?: [];
-    $result = [];
-
-    foreach ($menu_items as $menu_item) {
-        if ($menu_item->menu_item_parent == 0) {
-            if ($menu_item->title === "Robb Spotlight") {
-                $menu_item->url = "javascript:void(0);";
-            }
-            
-            $result[] = $menu_item;
-        }
-    }
-
-    return $result;
 }

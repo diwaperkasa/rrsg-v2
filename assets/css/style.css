@@ -296,3 +296,12 @@ nav.nav-main .dropdown:hover .dropdown-menu {
 #desktop-menu .dropdown-toggle::after {
   display: none;
 }
+
+.slider-menu .dropdown-menu {
+  position: fixed !important;
+}
+
+/* .nav-scroller:has(.dropdown-toggle.show) {
+  overflow-y: visible !important;
+  overflow-x: unset !important;
+} */
