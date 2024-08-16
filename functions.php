@@ -33,7 +33,7 @@ function theme_enqueue_script()
     wp_enqueue_script('jquery-rrsg', get_stylesheet_directory_uri() . '/assets/vendor/jquery/jquery-3.2.1.min.js', [], false, true);
     wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.bundle.min.js', [], false, true);
     wp_enqueue_script('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/owl.carousel.min.js', [], false, true);
-    wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=1.2', [], false, true);
+    wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=1.3', [], false, true);
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_script');
@@ -742,7 +742,7 @@ function get_mobile_menu()
                 $menu_list .= '</li>' . "\n";
                 // if it's the last child, close the submenu code
                 if (isset($menu_items[$count + 1]) && $menu_items[$count + 1]->menu_item_parent != $parent_id && $submenu) {
-                    $menu_list .= "\t\t" . '</ul></li>' . "\n";
+                    $menu_list .= "\t\t" . '</ul>' . "\n";
                     $submenu = false;
                 }
             }
@@ -753,14 +753,25 @@ function get_mobile_menu()
                     $previous_item_has_submenu = false; //reset
                 } else {
                     // close a link and list item
-                    $menu_list .= "\t" . '</a></li>' . "\n";
+                    $menu_list .= "\t" . '</div></li>' . "\n";
                 }
             }
 
             $count++;
         }
+
+        $menu_list .= "\t" . '</ul></li>' . "\n";
     } else {
         $menu_list .= '<!-- no list defined -->';
+    }
+
+    $top_menu_item = get_top_menu();
+
+    foreach ($top_menu_item as $top_menu) {
+        $menu_list .= "\t" . '<li class="nav-item d-grid">';
+        $menu_list .= '<div class="btn-group">';
+        $menu_list .= '<a class="btn fs-1 btn-light text-start bg-transparent border-0" href="' . $top_menu->url . '">' . $top_menu->title . '</a>';
+        $menu_list .= '</div></li>' . "\n";
     }
 
     $menu_list .= "\t" . '</ul>' . "\n";
@@ -791,7 +802,7 @@ function get_slider_menu()
                 $menu_list .= "\t" . '
                     <div class="btn-group">
                         <a class="p-2 link-secondary text-uppercase fs-6" href="' . ($title === "Robb Spotlight" ? "javascript:void(0);" : $url) . '">' . $title . '</a>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split bg-transparent border-0 text-dark" type="button" data-sub-menu-id="submenu-' . $parent_id . '">
+                        <button type="button" class="d-none btn btn-secondary dropdown-toggle dropdown-toggle-split bg-transparent border-0 text-dark" type="button" data-sub-menu-id="submenu-' . $parent_id . '">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                     </div>

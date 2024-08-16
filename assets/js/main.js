@@ -54,3 +54,11 @@ $('.nav-scroller nav').scroll(function() {
   $(`.slider-dropdown .dropdown-menu.show`)
     .css('left', Math.min(Math.max(left, 0), width - elWidth));
 });
+
+$(`.slider-menu .dropdown-toggle`).each(function(index, el) {
+  const subMenuId = $(el).data('sub-menu-id');
+
+  if ($(`.slider-dropdown #${subMenuId}`).length) {
+    $(el).removeClass('d-none');
+  }
+});
