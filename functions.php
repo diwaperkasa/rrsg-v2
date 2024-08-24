@@ -860,3 +860,7 @@ function get_footer_menu()
 
     return $menu_items ?: [];
 }
+
+if (function_exists('acf_add_options_page')) {
+	acf_add_options_page();
+}
