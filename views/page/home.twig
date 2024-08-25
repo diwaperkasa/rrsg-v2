@@ -48,101 +48,58 @@
 		</section>
 		<section id="section-newsfeed">
 			<div class="container">
-				<div class="mb-2">
-					{% set articles = function('get_article', 'watches-jewellery', 3) %}
-					<div class="d-flex align-items-center my-3">
-						<h2 class="me-4">WATCHES</h2>
-						<a href="/watches-jewellery" class="btn btn-secondary rounded-0">READ MORE HERE</a>
-					</div>
+				{% set category_list = function("get_field", "article_category") %}
+				{% for category in category_list %}
 					<div class="mb-2">
-						{% for article in articles.posts %}
-							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
-							{% if (loop.index == 1) %}
-								{{ include('page/component/card.twig', {'article': article}) }}
-							{% endif %}
-						{% endfor %}
-						<div class="row">
-							<div class="col-md-7">
-								<div class="row">
-									{% for article in articles.posts %}
-										{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
-										{% if (loop.index > 1) %}
-											<div class="col-md-6 col-md-12">
-												{{ include('page/component/card.twig', {'article': article}) }}
-											</div>
-										{% endif %}
-									{% endfor %}
-								</div>
-							</div>
-							<div class="col-md-5">
-								<div id='div-gpt-ad-3035191-5' class="ad leaderboard leaderboard-vertical">
-									<script>
-										googletag.cmd.push(function() {
-											googletag.display('div-gpt-ad-3035191-5');
-										});
-									</script>
-								</div>
-							</div>
+						{% set articles = function('get_article', category.slug, 3) %}
+						<div class="d-flex align-items-center my-3">
+							<h2 class="me-4 text-uppercase">{{ category.name }}</h2>
+							<a href="{{ function('get_category_link', category.cat_ID) }}" class="btn btn-secondary rounded-0">READ MORE HERE</a>
 						</div>
-					</div>
-				</div>
-				<div class="mb-2">
-					{% set articles = function('get_article', 'style', 3) %}
-					<div class="d-flex align-items-center my-3">
-						<h2 class="me-4">STYLE</h2>
-						<a href="/style" class="btn btn-secondary rounded-0">READ MORE HERE</a>
-					</div>
-					<div class="mb-2">
-						{% for article in articles.posts %}
-							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
-							{% if (loop.index == 1) %}
-								{{ include('page/component/card.twig', {'article': article}) }}
-							{% endif %}
-						{% endfor %}
-						<div class="row">
+						<div class="mb-2">
 							{% for article in articles.posts %}
 								{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
-								{% if (loop.index > 1) %}
-									<div class="col-md-6">
-										{{ include('page/component/card.twig', {'article': article}) }}
-									</div>
+								{% if (loop.index == 1) %}
+									{{ include('page/component/card.twig', {'article': article}) }}
 								{% endif %}
 							{% endfor %}
-						</div>
-					</div>
-				</div>
-				<div id="div-gpt-ad-1698303160858-0" class="ad leaderboard leaderboard-mid">
-					<script>
-						googletag.cmd.push(function() {
-							googletag.display('div-gpt-ad-1698303160858-0');
-						});
-					</script>
-				</div>
-				<div class="mb-2">
-					{% set articles = function('get_article', 'gear', 3) %}
-					<div class="d-flex align-items-center my-3">
-						<h2 class="me-4">GEAR</h2>
-						<a href="/gear" class="btn btn-secondary rounded-0">READ MORE HERE</a>
-					</div>
-					<div class="mb-2">
-						{% for article in articles.posts %}
-							{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
-							{% if (loop.index == 1) %}
-								{{ include('page/component/card.twig', {'article': article}) }}
-							{% endif %}
-						{% endfor %}
-						<div class="row">
-							{% for article in articles.posts %}
-								{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
-								{% if (loop.index > 1) %}
-									<div class="col-md-6">
-										{{ include('page/component/card.twig', {'article': article}) }}
+							<div class="row">
+								<div class="col-md-7">
+									<div class="row">
+										{% for article in articles.posts %}
+											{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
+											{% if (loop.index > 1) %}
+												<div class="col-md-6 col-md-12">
+													{{ include('page/component/card.twig', {'article': article}) }}
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+								{% if loop.index == 1 %}
+									<div class="col-md-5">
+										<div id='div-gpt-ad-3035191-5' class="ad leaderboard leaderboard-vertical">
+											<script>
+												googletag.cmd.push(function() {
+													googletag.display('div-gpt-ad-3035191-5');
+												});
+											</script>
+										</div>
 									</div>
 								{% endif %}
-							{% endfor %}
+							</div>
 						</div>
 					</div>
-				</div>
+					{% if loop.index == 2 %}
+						<div id="div-gpt-ad-1698303160858-0" class="ad leaderboard leaderboard-mid">
+							<script>
+								googletag.cmd.push(function() {
+									googletag.display('div-gpt-ad-1698303160858-0');
+								});
+							</script>
+						</div>
+					{% endif %}
+				{% endfor %}
 			</div>
 		</section>
 		<section id="section-subscribe" class="mt-4">
