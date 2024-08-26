@@ -172,6 +172,28 @@
         googletag.pubads().collapseEmptyDivs();
         googletag.pubads().setCentering(true);
         googletag.enableServices();
+
+        // This listener will be called when a slot has finished rendering.
+        googletag.pubads().addEventListener("slotRenderEnded", (event) => {
+          const slotId = event.slot.getSlotElementId();
+          
+          if (event.advertiserId) {
+            const width = document.querySelector(`#${slotId}`).offsetWidth;
+            const iframe = document.querySelector(`#${slotId} iframe`);
+            const head = iframe.contentWindow.document.head;
+            const style = iframe.contentWindow.document.createElement('style');
+            const css = `img.img_ad { max-width: ${width}px; width: 100%; height: auto; }`;
+
+            head.appendChild(style);
+
+            if (style.styleSheet){
+              // This is required for IE8 and below.
+              style.styleSheet.cssText = css;
+            } else {
+              style.appendChild(document.createTextNode(css));
+            }
+          }
+        });
       });
     </script>
 		<!-- End GPT Async Tag -->
