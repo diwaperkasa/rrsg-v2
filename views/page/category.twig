@@ -26,13 +26,6 @@
 	{% set articles = function('get_category_article') %}
 	{% set currentUrl = function('get_current_url') %}
 	<main>
-		<div id="div-gpt-ad-1698302925146-0" class="ad leaderboard leaderboard-top">
-			<script>
-				googletag.cmd.push(function() {
-					googletag.display('div-gpt-ad-1698302925146-0');
-				});
-			</script>
-		</div>
 		<section id="section-newsfeed">
 			<div class="container">
 				<div class="row">
@@ -55,6 +48,13 @@
 									{{ include('page/component/card.twig', {'article': article}) }}
 								{% endif %}
 							{% endfor %}
+							<div id="div-gpt-ad-1698302925146-0" class="ad leaderboard leaderboard-top">
+								<script>
+									googletag.cmd.push(function() {
+										googletag.display('div-gpt-ad-1698302925146-0');
+									});
+								</script>
+							</div>
 							<div class="row post-listing">
 								{% for article in articles.posts %}
 									{% set term_list = function('wp_get_post_terms', article.ID, 'writer', {'field': 'all'}) %}
