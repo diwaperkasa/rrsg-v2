@@ -1,20 +1,26 @@
 
-window.onscroll = function() {stickyHeaderNav()};
-
+window.onscroll = function() {
+  stickyHeaderNav();
+};
 
 //Sticky Navbar:
 function stickyHeaderNav() {
+  const height = outerHeight(document.querySelector('#div-gpt-ad-1698301711475-0'));
 
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-
+  if (document.body.scrollTop > height || document.documentElement.scrollTop > height) {
     document.querySelector(".top-nav").classList.add("nav-stick");
-
   } else {
-
     document.querySelector(".top-nav").classList.remove("nav-stick");
-
   }
+}
 
+function outerHeight(element) {
+  const height = element.offsetHeight,
+    style = window.getComputedStyle(element)
+
+  return ['top', 'bottom']
+    .map(side => parseInt(style[`margin-${side}`]))
+    .reduce((total, side) => total + side, height)
 }
 
 $('.slider-menu .dropdown-toggle').click(function() {
