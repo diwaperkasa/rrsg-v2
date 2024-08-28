@@ -9,8 +9,10 @@ function stickyHeaderNav() {
 
   if (document.body.scrollTop > height || document.documentElement.scrollTop > height) {
     document.querySelector(".top-nav").classList.add("nav-stick");
+    document.querySelector('main').style.marginTop = `${document.querySelector('header').offsetHeight}px`;
   } else {
     document.querySelector(".top-nav").classList.remove("nav-stick");
+    document.querySelector('main').style.marginTop = '0px';
   }
 }
 
