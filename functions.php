@@ -329,7 +329,7 @@ function be_load_more_js()
     $current_slug = add_query_arg(array(), $wp->request);
     $query = array(
         'post__not_in'          => array(get_queried_object_id()),
-        'posts_per_page'        => 6,
+        'posts_per_page'        => 5,
         'post_status'           => 'publish',
         'post_type'             => ['post', 'package', 'features'],
         'order'                 => 'DESC',
