@@ -189,7 +189,7 @@ function get_slider()
         'post__in'                 => $articles,
         'posts_per_page'         => $postcount,
         'order'                  => 'DESC',
-        'orderby'                => 'post_date',
+        'orderby'                => 'date',
     );
     $query = new WP_Query($args);
     wp_reset_postdata();
@@ -269,7 +269,7 @@ function get_article(string $category, int $limit = 5, int $page = 1)
         'post_status' => 'publish',
         'post_type' => ['post', 'package', 'features'],
         'order' => 'DESC',
-        'orderby'   => 'post_date',
+        'orderby'   => 'date',
         'tax_query' => [
             [
                 'taxonomy' => 'category',
@@ -302,7 +302,7 @@ function get_most_popular_article()
     $args = [
         'post_type'           => ['post', 'features', 'package'],
         'post__in'            => $posts_most_pageviews_id,
-        'orderby'             => 'post_date',
+        'orderby'             => 'date',
         'posts_per_page'      => '6',
     ];
 
@@ -333,7 +333,7 @@ function be_load_more_js()
         'post_status'           => 'publish',
         'post_type'             => ['post', 'package', 'features'],
         'order'                 => 'DESC',
-        'orderby'               => 'post_date',
+        'orderby'               => 'date',
         'tax_query' => [
             [
                 'taxonomy' => 'category',
