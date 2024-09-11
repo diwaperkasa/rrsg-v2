@@ -10,7 +10,7 @@
                     <h5>{{ function('short_title', article) }}</h5>
                 </div>
                 <!-- <p class="text-secondary mb-2">Audemars Piguet launches a stunning new Royal Oak Concept Flying Tourbillon with famed couturier Tamara Ralph</p> -->
-                <span>{{ function('wp_date', 'j F, Y', function('strtotime', article.post_date)) }}</span>
+                <span class="date-post">{{ function('get_the_date', 'j F, Y', article) }}</span>
                 -
                 <span>{{ term_list[0].name }}</span>
             </div>
