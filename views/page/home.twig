@@ -164,7 +164,7 @@
 			const url = $('#subscribe-type option:checked').data('url');
 
 			if (url) {
-				window.open(url);
+				return dynamicallyCreateAnchorAndNavigate(url);
 			}
 		});
 
@@ -172,8 +172,17 @@
 			const url = $('#subscribe-type option:checked').data('url');
 
 			if (url) {
-				window.open(url);
+				return dynamicallyCreateAnchorAndNavigate(url);
 			}
 		});
+
+		function dynamicallyCreateAnchorAndNavigate(url) {
+			const anchorElement = document.createElement('a');
+			anchorElement.href = url;
+			anchorElement.target = '_blank';
+			document.body.appendChild(anchorElement);
+			anchorElement.click();
+			document.body.removeChild(anchorElement);
+		}
 	</script>
 {% endblock %}
