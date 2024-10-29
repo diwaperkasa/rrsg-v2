@@ -287,10 +287,8 @@ function get_article(string $category, int $limit = 5, int $page = 1)
 
 function get_category_article(int $limit = 5)
 {
-    global $wp;
-
-    $current_slug = add_query_arg(array(), $wp->request);
-    $articles = get_article($current_slug, $limit);
+    $term = get_queried_object();
+    $articles = get_article($term->slug, $limit);
 
     return $articles;
 }
@@ -324,9 +322,7 @@ function get_current_url()
 //Ajax Load More
 function be_load_more_js()
 {
-    global $wp;
-
-    $current_slug = add_query_arg(array(), $wp->request);
+    $term = get_queried_object();
     $query = array(
         'post__not_in'          => array(get_queried_object_id()),
         'posts_per_page'        => 5,
@@ -337,7 +333,7 @@ function be_load_more_js()
         'tax_query' => [
             [
                 'taxonomy' => 'category',
-                'terms' => $current_slug,
+                'terms' => $term->slug,
                 'field' => 'slug',
             ]
         ]
