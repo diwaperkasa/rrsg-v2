@@ -233,7 +233,7 @@ a:hover {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 65vh;
+  /* max-height: 65vh; */
 }
 
 .img-thumb {
