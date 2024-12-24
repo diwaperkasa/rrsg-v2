@@ -22,7 +22,7 @@ function theme_enqueue_styles()
     wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/vendor/bootstrap/bootstrap.min.css');
     wp_enqueue_style('owl-carousel', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.carousel.min.css');
     wp_enqueue_style('owl-carousel-theme', get_stylesheet_directory_uri() . '/assets/vendor/owlcarousel/assets/owl.theme.default.css', ['owl-carousel']);
-    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=3.0');
+    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css?v=3.1');
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
