@@ -330,14 +330,17 @@ function be_load_more_js()
         'post_type'             => ['post', 'package', 'features'],
         'order'                 => 'DESC',
         'orderby'               => 'date',
-        'tax_query' => [
+    );
+
+    if ($term) {
+        $query['tax_query'] = [
             [
                 'taxonomy' => 'category',
                 'terms' => $term->slug,
                 'field' => 'slug',
             ]
-        ]
-    );
+        ];
+    }
 
     $args = array(
         'nonce' => wp_create_nonce('be-load-more-nonce'),
