@@ -223,6 +223,7 @@ a:hover {
 }
 
 .wp-caption {
+  text-align: center;
   max-width: 100%;
   margin-bottom: 2em;
 }
