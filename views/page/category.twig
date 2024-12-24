@@ -35,7 +35,7 @@
 							<a href="/">Home</a>
 						</li>
 						<li class="breadcrumb-item h5">
-							<a href="{{ term.name }}">{{ term.name }}</a>
+							<a href="{{ function('get_term_link', term) }}">{{ term.name }}</a>
 						</li>
 					</ol>
 					<hr class="flex-grow-1 border-top border-dark ms-4">
