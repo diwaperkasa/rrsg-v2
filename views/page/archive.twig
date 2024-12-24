@@ -26,6 +26,19 @@
 {% block content %}
     <main>
 		<section id="section-search">
+            <nav class="container my-4" aria-label="breadcrumb">
+				<div class="d-flex align-items-center">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item h5">
+							<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item h5">
+							<span>Archive</span>
+						</li>
+					</ol>
+					<hr class="flex-grow-1 border-top border-dark ms-4">
+				</div>
+			</nav>
 			<div class="container">
                 {% if data.posts is not empty %}
                     <div class="row article-list">
