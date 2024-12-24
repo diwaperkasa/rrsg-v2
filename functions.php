@@ -563,11 +563,11 @@ function rrsg_custom_post_gallery($value, $attr, $instance)
             }
 
             $itemTemplate = "
-                <figure {$itemtag} class='carousel-cell {$orientation}'>
+                <figure {$itemtag} class='wp-caption carousel-cell {$orientation}'>
                     <div>
                         {$image_output}
                     </div>
-                    <figcaption id='{$selector}-{$id}'>
+                    <figcaption class='wp-caption-text' id='{$selector}-{$id}'>
                         " . wptexturize($attachment->post_excerpt) . "
                     </figcaption>
                 </figure>
