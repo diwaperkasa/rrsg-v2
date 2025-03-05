@@ -190,7 +190,9 @@
             const iframe = document.querySelector(`#${slotId} iframe`);
             const head = iframe.contentWindow.document.head;
             const style = iframe.contentWindow.document.createElement('style');
-            const css = `img.img_ad { max-width: ${width}px; width: 100%; height: auto; }`;
+            const css = `
+              .GoogleActiveViewElement img { max-width: ${width}px; width: 100%; height: auto; }
+            `;
 
             head.appendChild(style);
 

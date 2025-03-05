@@ -217,7 +217,7 @@ a:hover {
   height: auto;
 }
 
-.leaderboard {
+.leaderboard:has(iframe) {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
