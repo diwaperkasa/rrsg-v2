@@ -94,8 +94,11 @@
                 %}
 				<h1 class="title mb-3">{{ data.post.title }}</h1>
 				<div class="d-flex justify-content-between mb-3">
-					<span>By
-						<span class="writer-post">{{ term_list[0].name }}</span>
+					<span class="writers-name">
+						<span class="me-1">By</span>
+						{% for writer in term_list %}
+							<a href="{{ function('get_term_link', writer) }}" class="writer-post me-2">{{ writer.name }}</a>
+						{% endfor %}
 					</span>
 					<span class="date-post">{{ function('get_the_date', 'j F, Y') }}</span>
 				</div>
