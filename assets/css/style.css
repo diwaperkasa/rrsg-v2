@@ -305,6 +305,23 @@ nav.nav-main .dropdown:hover .dropdown-menu {
   position: fixed !important;
 }
 
+.paragraph .gallery img {
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 576px) {
+  .paragraph .gallery img {
+    aspect-ratio: 1/1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .paragraph .gallery img {
+    aspect-ratio: 16/9;
+  }
+}
+
 /* .nav-scroller:has(.dropdown-toggle.show) {
   overflow-y: visible !important;
   overflow-x: unset !important;
