@@ -322,10 +322,10 @@ nav.nav-main .dropdown:hover .dropdown-menu {
   }
 }
 
-.flickity-enabled .flickity-viewport {
+/* .flickity-enabled .flickity-viewport {
   aspect-ratio: 16 / 11;
   height: auto !important;
-}
+} */
 
 /* .nav-scroller:has(.dropdown-toggle.show) {
   overflow-y: visible !important;
