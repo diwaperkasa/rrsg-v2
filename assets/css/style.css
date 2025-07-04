@@ -230,7 +230,7 @@ a:hover {
 
 .wp-caption img {
   text-align: center;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
   /* max-height: 65vh; */
@@ -320,6 +320,11 @@ nav.nav-main .dropdown:hover .dropdown-menu {
   .paragraph .gallery img {
     aspect-ratio: 16/9;
   }
+}
+
+.flickity-enabled .flickity-viewport {
+  aspect-ratio: 16 / 11;
+  height: auto !important;
 }
 
 /* .nav-scroller:has(.dropdown-toggle.show) {
