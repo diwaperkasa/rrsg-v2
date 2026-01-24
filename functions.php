@@ -863,3 +863,25 @@ function get_footer_menu()
 if (function_exists('acf_add_options_page')) {
 	acf_add_options_page();
 }
+
+add_filter('ep_is_integrated', '__return_true');
+
+add_action( 'pre_get_posts', function( $query ) {
+    if ($query->is_search() && $query->is_main_query()) {
+        $query->set('post_status', ['publish']);
+        $query->set('ignore_sticky_posts', true);
+        
+        if ( apply_filters('ep_is_integrated', false) ) {
+            $query->set('fields', '');
+            $query->set('ep_integrate', true);
+        }
+    }
+});
+
+add_filter('ep_is_integrated', function ($integrated) {
+    if (is_admin()) {
+        return false;
+    }
+
+    return $integrated;
+}, 10, 3);
