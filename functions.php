@@ -109,12 +109,29 @@ function add_custom_field_action()
 
 function rrsg_render(string $path, array $data = [])
 {
-    $context = \Timber\Timber::context($data);
     $templateData = [
-        'data' => $context,
         'dfpTarget' => get_targets(),
-        'banner' => get_slider(),
     ];
+
+    if (is_home()) {
+        $templateData['banner'] = get_slider();
+    }
+
+    if (!is_search()) {
+        $context = \Timber\Timber::context($data);
+        $templateData['data'] = $context;
+    } else {
+        $context['posts'] = Timber::get_posts([
+            'post_status'           => 'publish',
+            'ignore_sticky_posts'   => true,
+            'fields'                => '',
+            'post_type'             => ['post', 'features', 'package'],
+            'ep_integrate'          => true,
+            'suppress_filters'      => false,
+        ]);
+
+        $templateData['data'] = $context;
+    }
 
     return \Timber\Timber::compile("page/{$path}", $templateData);
 }
