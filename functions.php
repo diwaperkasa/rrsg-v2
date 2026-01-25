@@ -190,6 +190,7 @@ function get_slider()
         'posts_per_page'         => $postcount,
         'order'                  => 'DESC',
         'orderby'                => 'date',
+        'no_found_rows' => true,
     );
     $query = new WP_Query($args);
     wp_reset_postdata();
@@ -254,6 +255,7 @@ function get_latest_article()
         'posts_per_page'         => '6',
         'order'                  => 'DESC',
         'orderby'                => 'date',
+        'no_found_rows' => true,
     );
     $query = new WP_Query($args);
     wp_reset_postdata();
@@ -270,6 +272,7 @@ function get_article(string $category, int $limit = 5, int $page = 1)
         'post_type' => ['post', 'package', 'features'],
         'order' => 'DESC',
         'orderby'   => 'date',
+        'no_found_rows' => true,
         'tax_query' => [
             [
                 'taxonomy' => 'category',
@@ -302,6 +305,7 @@ function get_most_popular_article()
         'post__in'            => $posts_most_pageviews_id,
         'orderby'             => 'date',
         'posts_per_page'      => '6',
+        'no_found_rows' => true,
     ];
 
     $query = new WP_Query($args);
@@ -330,6 +334,7 @@ function be_load_more_js()
         'post_type'             => ['post', 'package', 'features'],
         'order'                 => 'DESC',
         'orderby'               => 'date',
+        'no_found_rows' => true,
     );
 
     if ($term) {
