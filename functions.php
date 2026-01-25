@@ -113,7 +113,7 @@ function rrsg_render(string $path, array $data = [])
         'dfpTarget' => get_targets(),
     ];
 
-    if (is_home()) {
+    if (is_front_page()) {
         $templateData['banner'] = get_slider();
     }
 
