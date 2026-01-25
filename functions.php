@@ -879,6 +879,7 @@ add_action( 'pre_get_posts', function( $query ) {
         if ( apply_filters('ep_is_integrated', false) ) {
             $query->set('fields', '');
             $query->set('ep_integrate', true);
+            $query->set('suppress_filters', false);
         }
     }
 });
