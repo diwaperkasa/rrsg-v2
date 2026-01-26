@@ -117,10 +117,12 @@ function rrsg_render(string $path, array $data = [])
         $templateData['banner'] = get_slider();
     }
 
-    if (!is_search()) {
+    if (is_single() || is_page()) {
         $context = \Timber\Timber::context($data);
         $templateData['data'] = $context;
-    } else {
+    }
+    
+    if (is_search()) {
         $context['posts'] = Timber::get_posts([
             'post_status'           => 'publish',
             'ignore_sticky_posts'   => true,
@@ -131,6 +133,13 @@ function rrsg_render(string $path, array $data = [])
         ]);
 
         $templateData['data'] = $context;
+    }
+
+    if (is_tag() || is_tax()) {
+        $context['posts'] = Timber::get_posts([
+            'ep_integrate'          => true,
+            'suppress_filters'      => false,
+        ]);
     }
 
     return \Timber\Timber::compile("page/{$path}", $templateData);
