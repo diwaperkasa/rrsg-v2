@@ -136,7 +136,7 @@ function rrsg_render(string $path, array $data = [])
         $templateData['data'] = $context;
     }
 
-    if (is_tag() || is_tax()) {
+    if (is_tag() || is_tax() || is_archive()) {
         $context['posts'] = Timber::get_posts([
             'ep_integrate'          => true,
             'suppress_filters'      => false,
