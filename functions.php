@@ -144,6 +144,8 @@ function rrsg_render(string $path, array $data = [])
         $templateData['data'] = $context;
     }
 
+    array_merge($templateData, $data);
+
     return \Timber\Timber::compile("page/{$path}", $templateData);
 }
 
