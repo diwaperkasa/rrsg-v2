@@ -111,6 +111,7 @@ function rrsg_render(string $path, array $data = [])
 {
     $templateData = [
         'dfpTarget' => get_targets(),
+        'data' => \Timber\Timber::context_global(),
     ];
 
     if (is_front_page()) {
@@ -144,9 +145,9 @@ function rrsg_render(string $path, array $data = [])
         $templateData['data'] = $context;
     }
 
-    $result = array_merge($templateData, $data);
+    $templateData['data'] = array_merge($templateData['data'], $data);
 
-    return \Timber\Timber::compile("page/{$path}", $result);
+    return \Timber\Timber::compile("page/{$path}", $templateData);
 }
 
 // DFP Tags
