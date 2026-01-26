@@ -140,6 +140,8 @@ function rrsg_render(string $path, array $data = [])
             'ep_integrate'          => true,
             'suppress_filters'      => false,
         ]);
+
+        $templateData['data'] = $context;
     }
 
     return \Timber\Timber::compile("page/{$path}", $templateData);
