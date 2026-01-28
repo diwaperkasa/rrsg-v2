@@ -125,6 +125,7 @@ function rrsg_render(string $path, array $data = [])
     
     if (is_search()) {
         $context['posts'] = Timber::get_posts([
+            's'                     => get_query_var('s'),
             'post_status'           => 'publish',
             'ignore_sticky_posts'   => true,
             'fields'                => '',
