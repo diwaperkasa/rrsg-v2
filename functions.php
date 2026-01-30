@@ -923,3 +923,9 @@ add_filter('ep_is_integrated', function ($integrated) {
 
     return $integrated;
 }, 10, 3);
+
+if ( defined( 'AUTOMATIC_UPDATER_DISABLED' ) && AUTOMATIC_UPDATER_DISABLED ) {
+    remove_action( 'admin_init', '_maybe_update_plugins' );
+    remove_action( 'admin_init', '_maybe_update_themes' );
+    remove_action( 'admin_init', '_maybe_update_core' );
+}

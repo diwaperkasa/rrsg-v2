@@ -172,7 +172,9 @@
 			const url = $('#subscribe-type option:checked').data('url');
 
 			if (url) {
-				return dynamicallyCreateAnchorAndNavigate(url);
+				return window.location.href = url;
+				// return window.open(url, '_blank');
+				// return dynamicallyCreateAnchorAndNavigate(url);
 			}
 		});
 
