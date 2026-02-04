@@ -111,42 +111,12 @@ function rrsg_render(string $path, array $data = [])
 {
     $templateData = [
         'dfpTarget' => get_targets(),
-        'data' => \Timber\Timber::context_global(),
+        'data' => \Timber\Timber::context($data),
     ];
 
     if (is_front_page()) {
         $templateData['banner'] = get_slider();
     }
-
-    if (is_single() || is_page()) {
-        $context = \Timber\Timber::context($data);
-        $templateData['data'] = $context;
-    }
-    
-    if (is_search()) {
-        $context['posts'] = Timber::get_posts([
-            's'                     => get_query_var('s'),
-            'post_status'           => 'publish',
-            'ignore_sticky_posts'   => true,
-            'fields'                => '',
-            'post_type'             => ['post', 'features', 'package'],
-            'ep_integrate'          => true,
-            'suppress_filters'      => false,
-        ]);
-
-        $templateData['data'] = $context;
-    }
-
-    if (is_tag() || is_tax() || is_archive()) {
-        $context['posts'] = Timber::get_posts([
-            'ep_integrate'          => true,
-            'suppress_filters'      => false,
-        ]);
-
-        $templateData['data'] = $context;
-    }
-
-    $templateData['data'] = array_merge($templateData['data'], $data);
 
     return \Timber\Timber::compile("page/{$path}", $templateData);
 }
@@ -912,6 +882,12 @@ add_action( 'pre_get_posts', function( $query ) {
             $query->set('fields', '');
             $query->set('ep_integrate', true);
             $query->set('suppress_filters', false);
+        }
+    }
+
+    if ((is_tag() || is_tax()) && $query->is_main_query()) {
+        if ( apply_filters('ep_is_integrated', false) ) {
+            $query->set('ep_integrate', true);
         }
     }
 });
