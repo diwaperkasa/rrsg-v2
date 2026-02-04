@@ -900,6 +900,8 @@ add_filter('ep_is_integrated', function ($integrated) {
     return $integrated;
 }, 10, 3);
 
+add_filter( 'ep_partial_matching_enabled', '__return_false' );
+
 add_filter( 'ep_minimum_should_match', function () {
     return '100%';
 });
