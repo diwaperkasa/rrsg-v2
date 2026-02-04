@@ -906,6 +906,13 @@ add_filter( 'ep_minimum_should_match', function () {
     return '100%';
 });
 
+add_filter( 'ep_search_fields', function () {
+    return [
+        'post_title'   => 2, // weight title higher
+        'post_content' => 1,
+    ];
+});
+
 if ( defined( 'AUTOMATIC_UPDATER_DISABLED' ) && AUTOMATIC_UPDATER_DISABLED ) {
     remove_action( 'admin_init', '_maybe_update_plugins' );
     remove_action( 'admin_init', '_maybe_update_themes' );
