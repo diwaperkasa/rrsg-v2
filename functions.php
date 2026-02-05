@@ -900,18 +900,7 @@ add_filter('ep_is_integrated', function ($integrated) {
     return $integrated;
 }, 10, 3);
 
-add_filter( 'ep_partial_matching_enabled', '__return_false' );
-
-add_filter( 'ep_minimum_should_match', function () {
-    return '100%';
-});
-
-add_filter( 'ep_search_fields', function () {
-    return [
-        'post_title'   => 2, // weight title higher
-        'post_content' => 1,
-    ];
-});
+add_filter( 'ep_post_match_fuzziness', '__return_zero' );
 
 if ( defined( 'AUTOMATIC_UPDATER_DISABLED' ) && AUTOMATIC_UPDATER_DISABLED ) {
     remove_action( 'admin_init', '_maybe_update_plugins' );
